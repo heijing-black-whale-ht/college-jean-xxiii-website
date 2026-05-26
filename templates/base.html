@@ -3,25 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My High School Website{% endblock %}</title>
+    <title>{% block title %}Collège Jean XXIII{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
 </head>
 <body>
     <header>
-        <nav>
+        <div>
+            <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}">
+            </a>
+        </div>
+
+        <div>
+         <nav>
             <ul>
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('about') }}">About</a></li>
-                <li><a href="{{ url_for('events') }}">Events</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('home') }}">Acceuil</a></li>
+                <li><a href="{{ url_for('about') }}">À Propos</a></li>
+                <li><a href="{{ url_for('events') }}">Évènements</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacts</a></li>
             </ul>
-        </nav>
+         </nav>
+        </div>
+    
+        <div class="header-icons">
+            <i class="fas fa-search"></i>
+            <i id="hamburger" class="fas fa-bars"></i>
+        </div>
+
     </header>
+
+    <div id="mobile-menu" class="mobile-nav" style="display: none;">
+                <ul>
+                    <li><a href="#">Admission</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                </ul>
+    </div>
+
     <main>
         {% block content %}{% endblock %}
     </main>
+
     <footer>
-        <p>&copy; 2023 My High School. All rights reserved.</p>
+      <div class="footer-container">
+
+       <div class="footer-column">
+        <div class="footer-bottom">
+            <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}">
+            </a>
+            <p>&copy; 2026, Collège Jean XXIII. Tous Droits Réservés.</p>
+        </div>
+       </div>
+
+       <div class="footer-column">       
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+       </div>
+
+       <div class="footer-column">
+        <div class="footer-bottom">
+         <nav>
+            <ul>
+                <li><a href="#">Admission</a></li>
+                <li><a href="{{ url_for('events') }}">Évènements</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+            </ul>
+         </nav>
+        </div>
+       </div>
+
+      </div>  
     </footer>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

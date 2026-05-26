@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Home - My High School{% endblock %}
+{% block title %}Acceuil - Collège Jean XXIII{% endblock %}
 
 {% block content %}
-<section id="hero">
-    <h1>Welcome to My High School</h1>
-    <p>Where memories are made and futures are shaped.</p>
+
+
+<section id="hero" class= "hero-section">
+    <div class="hero-content">
+        <h1>Bienvenue au Collège Jean XXIII</h1>
+        <p>"Visons Toujours l'Excellence"</p>
+        <button>
+            <ul>
+                <li><a href="{{ url_for('about') }}">Visitez-nous</a></li>
+            </ul>
+        </button>
+    </div>    
 </section>
 
 <section id="news">
-    <h2>Latest News</h2>
+    <h2>Dernières Nouvelles</h2>
     <article>
-        <h3>School Reopening</h3>
-        <p>We're excited to welcome back students for the new academic year!</p>
+        <h3>Reouverture des classes</h3>
+        <p>Nous sommes ravis d'acceuilir à nouveau les étudiants pour la nouvelle année scolaire!</p>
     </article>
 </section>
 {% endblock %}
