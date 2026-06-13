@@ -19,6 +19,9 @@ navLinks.forEach(link => {
     });
 });
 
+// adding an interactive navigation that appears only when the hamburger menu icon is clicked
+// the nav menu appears only if it's not already being displayed
+// the nav menu closes when the hamburger menu is clicked a second time
 document.getElementById('hamburger').addEventListener('click', function() {
     let menu = document.getElementById('mobile-menu');
 
@@ -28,3 +31,31 @@ document.getElementById('hamburger').addEventListener('click', function() {
         menu.style.display = 'none';
     }
 });
+
+// design an interactive wallpaper using different images in static/images
+// the collection
+const images = [
+    "static/images/bg1.png",
+    "static/images/bg1 (1).png",
+    "static/images/bg1 (2).png",
+    "static/images/bg1 (3).png",
+    "static/images/bg1 (4).png",
+    "static/images/bg1 (5).png"
+
+];
+
+let idx = 0;
+const hero = document.getElementById('hero');
+
+function setHeroImage(i) {
+    hero.style.backgroundImage = `url('${images[i]}')`;
+}
+
+// Set initial image
+setHeroImage(idx);
+
+// Rotate every 5 seconds
+setIntervall(() => {
+    idx = (idx + 1) % images.length;
+    setHeroImage(idx);
+}, 5000);
