@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Acceuil - Collège Jean XXIII{% endblock %}
+
+{% block content %}
+
+
+<section class="min-vh-100 d-flex align-items-center position-relative text-white" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ url_for('static', filename='images/bg-image.png') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container py-4">
+        
+        <div class="row align-items-center gy-5">
+            
+            <div class="col-lg-6 col-sm-12 text-center text-lg-start">
+                <h1 class="display-5 fw-bold text-white lh-1 mb-3">
+                    Bienvenue au<br> Collège Jean XXIII
+                </h1>
+                <p class="lead text-white-70 italic mb-4">"Visons Toujours l'Excellence"</p>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start justify-content-center">
+                    <a href="{{ url_for('about') }}" class="btn btn-primary btn-lg px-4 me-md-2 fw-semibold">
+                        Visitez-nous
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 mt-4 mt-lg-0">
+                <div class="card border-0 shadow-sm p-4 bg-white rounded-3 text-start">
+                    <h2 class="h4 fw-bold text-dark border-bottom pb-2 mb-3">
+                        <i class="fas fa-newspaper me-2 text-primary"></i>Dernières Nouvelles
+                    </h2>
+                    <article class="p-2">
+                        <h3 class="h5 fw-bold text-primary mb-1">Réouverture des classes</h3>
+                        <p class="text-secondary mb-0 small">
+                            Nous sommes ravis d'accueillir à nouveau les étudiants pour la nouvelle année scolaire!
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+        </div> </div> </section>
+
+{% endblock %}

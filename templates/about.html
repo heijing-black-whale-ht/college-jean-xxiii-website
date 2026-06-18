@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+000000000000000000
+{% block title %}About - My High School{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-dark text-light position-relative" style="background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url('{{ url_for('static', filename='images/jean23.png') }}') center/cover no-repeat;">
+    <div class="container py-5 text-center">
+        <h1 class="fw-bold text-uppercase tracking-wide mb-3" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+            Notre Histoire & Valeurs
+        </h1>
+        <p class="lead opacity-75 mx-auto text-white-50" style="max-width: 700px;">
+            Découvrez l'histoire, la mission et les valeurs fondamentales du Collège JEAN XXIII.
+        </p>
+    </div>
+</section>
+
+<section class="py-5 bg-dark text-light">
+    <div class="container py-4">
+        <div class="row align-items-start gy-4">
+            
+            <div class="col-lg-5">
+                <span class="text-secondary text-uppercase fw-bold tracking-wider small d-block mb-2">Depuis 2000</span>
+                <h2 class="fw-bold mb-4 display-6">Fondation et Engagement</h2>
+                <blockquote class="border-start border-secondary border-3 ps-3 my-4 italic text-white-50 fs-5">
+                    « Visons toujours l'excellence ! »
+                </blockquote>
+                <p class="text-light opacity-75 small lh-base mt-3">
+                    Un slogan qui a valu au Collège Jean XXIII une grande motivation par la formation intégrale de la jeunesse haïtienne. Depuis lors, par son dynamisme, il s'est imposé comme l'un des meilleurs collèges du pays.
+                </p>
+            </div>
+            
+            <div class="col-lg-7 text-light opacity-75">
+                <p class="mb-3">
+                    Dans toute société, l'éducation est un élément fondamental du développement. Un système éducatif performant est donc un avantage majeur, tandis qu'en être privé constitue un lourd handicap. À ce propos, <em>Victor Hugo</em> soulignait avec profondeur :
+                </p>
+                <p class="bg-black bg-opacity-25 p-3 rounded border-start border-secondary italic my-3 small text-white-50">
+                    « Chaque enfant qu'on enseigne est un homme gagné. Quatre-vingt-dix voleurs sur cent qui sont au bagne, ne sont jamais allés à l'école une fois... L'ignorance est la nuit qui commence l'abîme. »
+                </p>
+                <p class="mb-3">
+                    C'est l'instruction et la connaissance qui permettent à l'individu d'atteindre sa pleine dimension humaine. Aujourd'hui, notre rôle auprès de l'élève est celui d'un accompagnateur : l'aider à découvrir les réalités par lui-même, en accédant au réel et en acceptant d'y faire face.
+                </p>
+                <p>
+                    Les adolescents cherchent l'appui des adultes pour faire le pont vers l'âge mûr. Ils veulent être considérés comme des adultes en devenir, engagés dans un apprentissage progressif de la responsabilité envers eux-mêmes et envers la communauté.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-black bg-gradient text-light border-top border-bottom border-secondary border-opacity-10">
+    <div class="container py-4">
+        <div class="row align-items-center gy-5">
+            
+            <div class="col-lg-6">
+                <span class="text-secondary text-uppercase fw-bold tracking-wider small d-block mb-2">Notre Mission</span>
+                <h2 class="fw-bold mb-3">La Famille Éducative</h2>
+                <p class="text-light opacity-75 mb-4">
+                    L'objectif du Collège JEAN XXIII est de constituer une famille éducative favorisant le plein épanouissement de ses membres. Inspiré à la lumière de l'Évangile et basé sur la politique éducative des Frères du Sacré-Cœur, notre projet éducatif vise quatre axes fondamentaux :
+                </p>
+                
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 shadow-sm">
+                            <span class="text-secondary fw-bold me-2">01.</span> Formation Spirituelle
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 shadow-sm">
+                            <span class="text-secondary fw-bold me-2">02.</span> Formation Personnelle
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 shadow-sm">
+                            <span class="text-secondary fw-bold me-2">03.</span> Formation Intellectuelle
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 shadow-sm">
+                            <span class="text-secondary fw-bold me-2">04.</span> Formation Physique
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="p-2 rounded border border-secondary border-opacity-25 bg-dark shadow-lg">
+                    <div class="position-relative rounded overflow-hidden" style="height: 380px; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('{{ url_for('static', filename='images/Leonardo.png') }}') center/cover no-repeat;">
+                        <div class="position-absolute bottom-0 start-0 end-0 p-4 bg-dark bg-opacity-75 backdrop-blur">
+                            <p class="small text-white-50 mb-0">
+                                Valorisation de la personne humaine et renforcement positif au sein de notre communauté.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-5 text-light position-relative" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.85)), url('{{ url_for('static', filename='images/hands.jfif') }}') center/cover no-repeat;">
+    <div class="container py-5 text-center mx-auto" style="max-width: 800px;">
+        <span class="text-secondary text-uppercase fw-bold tracking-wider small d-block mb-2">Philosophie Éducative</span>
+        <h2 class="fw-bold mb-4">Droits, Devoirs & Discipline</h2>
+        <p class="lead opacity-75 mb-0 fs-6 lh-lg text-white-50">
+            Pour faciliter de bons rapports interpersonnels au sein de cette famille éducative, chaque élève est tenu de respecter les principes fondamentaux des Frères du Sacré-Cœur. Nos jeunes ont des droits inaliénables, mais l'accomplissement rigoureux de leurs devoirs favorise la qualité du processus éducatif. Ainsi, la discipline constitue le pilier central sur lequel s'appuient nos valeurs.
+        </p>
+    </div>
+</section>
+
+{% endblock %}
