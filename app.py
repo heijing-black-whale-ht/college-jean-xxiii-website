@@ -3,30 +3,42 @@ from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 import os
 from dotenv import load_dotenv
+from flask_login import (
+    LoginManager,
+    UserMixin,
+    login_user,
+    login_required,
+    logout_user,
+    current_user
+)
+from werkzeug.security import (
+    generate_password_hash,
+    check_password_hash
+)
 
 # Load dotenv environment keys
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
-
-
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'default_fallback_development_key')
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
 # --- DATABASE CONFIGURATION ---
-# This creates a 'school.db' file inside the main project folder layer
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'school.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app) # <-- Initialize the database engine
 
 # --- MAIL SERVER CONFIGURATION ---
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # IF using Gmail SMTP
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 
-# Add string fallbacks so if the .env fails to read, the app used them directly
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME') # The school's email address
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD') # App password (NOT personal password)
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
 
 mail = Mail(app)
@@ -34,22 +46,72 @@ mail = Mail(app)
 # --- DATABASE MODEL CONFIGURATION ---
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(150), nullable=False)  # e.g., "Remise des bulletins"
-    date_str = db.Column(db.String(50), nullable=False) # e.g., "25 Juin 2026"
-    description = db.Column(db.Text, nullable=False) # Detailed announcement info
+    title = db.Column(db.String(150), nullable=False)
+    date_str = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.Text, nullable=False)
     category = db.Column(db.String(50), nullable=False, default="Événement")
+    
     def __repr__(self):
         return f'<Event {self.title}>'
 
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 # Automatic database generator runner
 with app.app_context():
-    db.create_all() # Generates the local .db file and tables  automatically if missing
+    db.create_all()
+     
+    # Seed the administrator account safely using environment variables
+    if not User.query.filter_by(username='admin').first():
+        admin = User(username='admin')
+        # Pulls from .env; uses a secure fallback if .env is missing locally
+        secure_admin_password = os.getenv('ADMIN_PASSWORD', 'admin1234')
+        admin.set_password(secure_admin_password)
 
-# Quick diagnostic print when the server starts up
+        db.session.add(admin)
+        db.session.commit()
+        print("Admin account initialized securely from environment parameters.")
+
 print("\n--- SERVER CONFIG CHECK ---")
 print("Loading Mail User as:", app.config['MAIL_USERNAME'])
 print("----------------------------\n")
 
+# --- AUTHENTICATION ---
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(username=username).first()
+
+        if user and user.check_password(password):
+            login_user(user)
+            flash("Connexion réussie.", "success")
+            return redirect(url_for('admin_events'))
+        flash("Identifiants incorrects.", "danger")
+    return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("Déconnexion réussie.", "success")
+    return redirect(url_for('login'))
+
+# --- PUBLIC PAGES ---
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -60,16 +122,14 @@ def about():
 
 @app.route('/events')
 def events():
-    # Fetch every single event row currently saved in the database file
     public_events = Event.query.order_by(Event.id.desc()).all()
-    # Pass the database items directly into the existing HTML layout engine
     return render_template('events.html', events=public_events)
 
 # --- BACKEND ADMIN PORTAL FOR EVENTS ---
 @app.route('/admin/events', methods=['GET', 'POST'])
+@login_required
 def admin_events():
     if request.method == 'POST':
-        # Grab details from the new event creation form inputs
         title = request.form.get('title')
         date_str = request.form.get('date_str') 
         description = request.form.get('description')
@@ -79,11 +139,10 @@ def admin_events():
             flash("Veuillez remplir tous les champs obligatoires.", "danger")
             return redirect(url_for('admin_events'))
         
-        # Instantiate a new Database Object row
         new_event = Event(title=title, date_str=date_str, description=description, category=category)
         try:
-            db.session.add(new_event) # Stage the data record change
-            db.session.commit()       # Write the record to the sqlite file permanently
+            db.session.add(new_event)
+            db.session.commit()
             flash("Nouvel événement publié avec succès !", "success")
         except Exception as e:
             db.session.rollback()
@@ -92,13 +151,11 @@ def admin_events():
 
         return redirect(url_for('admin_events'))
 
-    # GET Request: fetch all current events so the admin can review or audit them
     current_events = Event.query.order_by(Event.id.desc()).all()
     return render_template('admin_events.html', events=current_events)
 
-
-# --- ROUTE TO DELETE AN EVENT (UN-NESTED & FLUSH TO THE LEFT MARGIN) ---
 @app.route('/admin/events/delete/<int:event_id>', methods=['POST'])
+@login_required
 def delete_event(event_id):
     event_to_delete = Event.query.get_or_404(event_id)
     try:
@@ -110,14 +167,15 @@ def delete_event(event_id):
         print(f"Database Delete Error : {e}")
         flash("Impossible de supprimer l'événement.", "danger")
     return redirect(url_for('admin_events'))
-    
 
 @app.route('/admin/events/edit/<int:event_id>', methods=['GET'])
+@login_required  # <-- FIXED: Locked down route access to authorized accounts only
 def edit_event(event_id):
     event = Event.query.get_or_404(event_id)
     return render_template('edit_event.html', event=event)
     
 @app.route('/admin/events/update/<int:event_id>', methods=['POST'])
+@login_required  # <-- FIXED: Locked down route access to authorized accounts only
 def update_event(event_id):
     event = Event.query.get_or_404(event_id)
 
@@ -144,26 +202,22 @@ def update_event(event_id):
         flash("Erreur lors de la mise à jour.", "danger")
     
     return redirect(url_for('admin_events'))
-    
 
 # --- CONTACT ENDPOINT CONTROLLER ---
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        # 1. Extract the secure form payloads using the HTML 'name' attributes
         sender_name = request.form.get('name')
         sender_email = request.form.get('email')
         user_message = request.form.get('message')
 
-        # 2. Construct the actual email payload
         msg = Message (
             subject=f"Nouveau message de {sender_name}",
-            sender=app.config['MAIL_USERNAME'], # Pulls directly from the clean config
-            recipients=['collegejeanxxiii2000@gmail.com'],  # Where the school actually checks email
+            sender=app.config['MAIL_USERNAME'],
+            recipients=['collegejeanxxiii2000@gmail.com'],
             body=f"De: {sender_name} ({sender_email})\n\nMessage:\n{user_message}"
         )
 
-        # Format a professional email body layout for the school administrators
         msg.body = f"""
         Nouveau message reçu depuis le site internet du Collège Jean XXIII:
 
@@ -178,11 +232,9 @@ def contact():
         -------------------------------------------------------------------------------------
         Remarque: Vous pouvez répondre directement à cet e-mail pour contacter l'expéditeur.
         """
-        # Override the reply-to header so when the school clicks "Reply", it replies to the  parent/user, not themselves
         msg.reply_to = sender_email
 
         try:
-            # 3. Fire the email engine out to the real world
             mail.send(msg)
             flash("Votre message a été envoyé avec succès ! L'administration vous répondra sous peu.", "success")
         except Exception as e:
@@ -191,7 +243,6 @@ def contact():
         
         return redirect(url_for('contact'))
     
-    # If HTTP request is normal 'GET' page load, just serve the interface view
     return render_template('contact.html')
 
 @app.route('/terms')
