@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Événements - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-5">
+        <div>
+            <h2 class="fw-semibold">Tableau de Bord Administrateur</h2>
+            <p class="text-muted mb-0">Ajouter ou supprimer des événements sur le site du Collège.</p>
+        </div>
+        <a href="{{ url_for('events') }}" class="btn btn-outline-secondary mt-3 mt-md-0">Voir la page publique ↗</a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show rounded-4 shadow-sm" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="row gx-4 gy-4">
+        <div class="col-lg-5">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-dark text-white border-0 rounded-top-4">
+                    <h5 class="card-title mb-0">Publier un Événement</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('admin_events') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Titre de l'événement</label>
+                            <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="ex: Remise des Diplômes" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_str" class="form-label">Date d'affichage</label>
+                            <input type="text" class="form-control form-control-lg" id="date_str" name="date_str" placeholder="ex: Vendredi 25 Juin 2026" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label text-dark fw-bold">Catégorie d'événement</label>
+                            <select class="form-select form-select-lg" id="category" name="category" required>
+                                <option value="Événement" selected>Événement</option>
+                                <option value="Réunion">Réunion</option>
+                                <option value="Académie">Académie</option>
+                                <option value="Vie Scolaire">Vie Scolaire</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="description" class="form-label">Description / Détails</label>
+                            <textarea class="form-control form-control-lg" id="description" name="description" rows="5" placeholder="Description de la cérémonie..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-4">Enregistrer et Publier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-primary text-white border-0 rounded-top-4">
+                    <h5 class="card-title mb-0">Événements en ligne ({{ events|length }})</h5>
+                </div>
+                <div class="card-body p-0">
+                    {% if events %}
+                        <div class="list-group list-group-flush">
+                            {% for event in events %}
+                                <div class="list-group-item p-3 d-flex justify-content-between align-items-start border-0">
+                                    <div class="me-3 flex-grow-1">
+                                        <div class="d-flex align-items-center gap-2 mb-2">
+                                            <h6 class="fw-semibold text-primary mb-0">{{ event.title }}</h6>
+                                            <span class="badge bg-secondary text-uppercase small">{{ event.category }}</span>
+                                        </div>
+                                        <small class="text-muted">{{ event.date_str }}</small>
+                                        <p class="mb-0 text-muted small mt-2" style="white-space: pre-line;">{{ event.description }}</p>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2 ms-3">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ event.id }}">Modifier</button>
+                                        <form action="{{ url_for('delete_event', event_id=event.id) }}" method="POST" onsubmit="return confirm('Supprimer cet événement définitivement ?');">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="editModal{{ event.id }}" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content rounded-4">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Modifier l'événement</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                                            </div>
+                                            <form action="{{ url_for('update_event', event_id=event.id) }}" method="POST">
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Titre</label>
+                                                        <input type="text" name="title" class="form-control" value="{{ event.title }}" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Date</label>
+                                                        <input type="text" name="date_str" class="form-control" value="{{ event.date_str }}" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Catégorie</label>
+                                                        <select name="category" class="form-select">
+                                                            <option {% if event.category == 'Événement' %}selected{% endif %}>Événement</option>
+                                                            <option {% if event.category == 'Réunion' %}selected{% endif %}>Réunion</option>
+                                                            <option {% if event.category == 'Académie' %}selected{% endif %}>Académie</option>
+                                                            <option {% if event.category == 'Vie Scolaire' %}selected{% endif %}>Vie Scolaire</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Description</label>
+                                                        <textarea name="description" class="form-control" rows="5" required>{{ event.description }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="p-4 text-center text-muted">
+                            Aucun événement n'est enregistré pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

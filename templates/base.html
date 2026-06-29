@@ -9,6 +9,39 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+    <div class="modal fade" id="legalGatekeeperModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="gatekeeperLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+            <div class="modal-header border-bottom border-secondary justify-content-center">
+                <h5 class="modal-title fw-bold text-uppercase tracking-wide text-secondary" id="gatekeeperLabel">
+                    Acceptation des Conditions
+                </h5>
+            </div>
+            <div class="modal-body text-center px-4 py-4">
+                <p class="mb-3">
+                    Pour accéder au portail et aux services en ligne du <strong>Collège Jean XXIII</strong>, vous devez accepter nos politiques d'utilisation.
+                </p>
+                <p class="small text-white-50 bg-black p-3 rounded border border-secondary-subtle">
+                    Veuillez lire attentivement nos 
+                    <a href="{{ url_for('terms') }}" class="text-info text-decoration-underline fw-bold" target="_blank">
+                        Termes et Conditions / Politique de Confidentialité
+                    </a>.
+                </p>
+            </div>
+            <div class="modal-footer border-top border-secondary d-flex gap-2 justify-content-center w-100">
+                <button type="button" id="gatekeeperRefuse" class="btn btn-outline-danger px-4">Refuser</button>
+                <button type="button" id="gatekeeperAccept" class="btn btn-info text-white fw-bold px-4">Accepter et Continuer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid px-2 px-sm-3 px-md-4">
@@ -23,9 +56,15 @@
             </a>
 
             <div class="d-flex align-items-center order-lg-last gap-3">
+<<<<<<< HEAD
                 <a href="#" class="text-light opacity-75 hover-opacity-100" aria-label="Search">
                     <i class="fas fa-search fs-5"></i>
                 </a>
+=======
+                <button id="searchToggle" class="btn btn-link text-light opacity-75 hover-opacity-100 p-0 border-0" aria-label="Search">
+                    <i class="fas fa-search fs-5"></i>
+                </button>
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
 
                 <a href="#" class="text-light opacity-75 hover-opacity-100 d-lg-none" id="hamburger" 
                    data-bs-toggle="collapse" data-bs-target="#navbarNav" 
@@ -34,6 +73,23 @@
                 </a>
             </div>
 
+<<<<<<< HEAD
+=======
+            <!-- Search Bar -->
+            <div id="searchBarContainer" class="search-bar-container" style="display: none; position: absolute; top: 100%; right: 0; background: var(--bs-dark); border-top: 1px solid var(--bs-secondary); width: 100%; z-index: 1050;">
+                <div class="p-3" style="max-width: 400px; margin-left: auto;">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="form-control form-control-sm" 
+                        placeholder="Rechercher..."
+                        aria-label="Search the website"
+                    >
+                    <div id="searchResults" class="mt-2" style="max-height: 300px; overflow-y: auto;"></div>
+                </div>
+            </div>
+
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
             <div class="collapse navbar-collapse text-uppercase bg-dark p-3 p-lg-0 rounded-bottom shadow-lg" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold gap-2 text-center text-lg-start"> 
                     <li class="nav-item border-bottom border-secondary border-opacity-25 border-lg-0 pb-2 pb-lg-0">
@@ -69,8 +125,13 @@
         {% block content %}{% endblock %}
     </main>
 
+<<<<<<< HEAD
     <footer class="bg-dark text-light pt-5 pb-4 mt-auto border-top border-secondary">
     <div class="container-fluid px-4">
+=======
+    <footer class="bg-dark text-light pt-5 mt-auto border-top border-secondary">
+    <div class="container-fluid px-4 pb-4">
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
         <div class="row text-center text-md-start align-items-start gy-4">
 
             <div class="col-xl-4 col-md-4 col-12 d-flex flex-column justify-content-center justify-content-md-start">
@@ -78,9 +139,12 @@
                     <a href="{{ url_for('home') }}" class="d-inline-block">
                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" height="55" class="d-block">
                     </a>
+<<<<<<< HEAD
                     <p class="small text-white-50 mb-0 text-start border-start border-secondary ps-3">
                         &copy; 2026, Collège Jean XXIII.<br>Tous Droits Réservés.
                     </p>
+=======
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
                 </div>
                 
                 <h5 class="text-uppercase fw-bold fs-6 mt-4 mb-2 tracking-wide text-secondary text-center text-md-start">A propos de CJXXIII</h5>
@@ -137,7 +201,11 @@
                         <ul class="list-unstyled d-flex flex-column gap-1 mb-0 text-center text-md-end">
                             <li><a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Staff</a></li>
                             <li><a href="{{ url_for('contact') }}" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Contacts</a></li>
+<<<<<<< HEAD
                             <li><a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Portail Éleve</a></li>
+=======
+                            <li><a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Portail Élève</a></li>
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
                         </ul>
                     </nav>
                 </div>
@@ -145,10 +213,32 @@
 
         </div>
     </div>
+<<<<<<< HEAD
+=======
+
+    <div class="bg-black py-3 border-top border-secondary-subtle">
+        <div class="container-fluid px-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-white-50">
+                <div>
+                    &copy; 2026 Collège Jean XXIII. Tous droits réservés.
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('terms') }}" class="text-decoration-none text-white-50 hover-opacity-100 transition-all">
+                        Termes & Conditions / Politique de Confidentialité
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
 </footer>
 
 
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<<<<<<< HEAD
     <!--<script src="{{ url_for('static', filename='js/script.js') }}"></script>-->
+=======
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
 </body>
 </html>

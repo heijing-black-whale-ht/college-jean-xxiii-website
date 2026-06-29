@@ -23,6 +23,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <div class="col-lg-6 col-sm-12 mt-4 mt-lg-0">
                 <div class="card border-0 shadow-sm p-4 bg-white rounded-3 text-start">
                     <h2 class="h4 fw-bold text-dark border-bottom pb-2 mb-3">
@@ -36,6 +37,57 @@
                     </article>
                 </div>
             </div>
+=======
+            <div class="container my-4">
+                <div class="card border-primary shadow-sm bg-white overflow-hidden">
+                    <div class="row g-0 align-items-center">
+            
+                    <div class="col-auto bg-danger text-white px-3 py-2 fw-bold text-uppercase d-flex align-items-center" style="min-height: 48px; font-size: 0.9rem; letter-spacing: 0.5px;">
+                        ⚡ Dernières Nouvelles
+                    </div>
+            
+                    <div class="col px-3 py-2">
+                        <div id="announcementCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
+                            <div class="carousel-inner">
+                        
+                                {% if updates %}
+                                    {% for update in updates %}
+                                        <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <a href="{{ url_for('events') }}" class="text-decoration-none text-dark text-truncate fw-semibold pe-2">
+                                                    <span class="text-primary">[{{ update.category }}]</span> {{ update.title }}
+                                                </a>
+                                                <small class="text-muted text-nowrap d-none d-sm-inline">{{ update.date_str }}</small>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="carousel-item active">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            
+                                            <span class="text-muted fw-medium animate-pulse">
+                                                📩 Abonnez-vous à notre newsletter pour rester branché !
+                                            </span>
+
+                                            <a href="{{ url_for('contact') }}"
+                                                class="btn btn-sm btn-primary rounded-pill d-inline-flex align-items-center justify-content-center fw-semibold shadow-sm text-nowrap"
+                                                style="min-width: 140px; padding: 0.55rem 0.9rem; font-size: 0.95rem; line-height: 1;"
+                                                title="Nous contacter">
+                                                Contactez-nous <span class="ms-2">→</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                        
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
 
         </div> </div> </section>
 
