@@ -3,6 +3,40 @@
 {% block title %}Contact - Collège Jean XXIII{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
+<h1>Contactez-nous</h1>
+
+<div class="contact-info">
+    <h2>Adresse</h2>
+    <p>Babiole, Turgeau<br>
+    Port-au-Prince, Haiti</p>
+</div>
+
+<div class="contact-info">
+    <h2>Téléphone</h2>
+    <p>(509) 2222-2424</p>
+</div>
+
+<div class="contact-info">
+    <h2>Email</h2>
+    <p>fsc@collegejeanxxii.edu</p>
+    <p>collegejeanxxiii2000@gmail.com</p>
+</div>
+
+<form id="contact-form">
+    <h2>Envoyez-nous un message</h2>
+    <label for="name">Nom:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Envoyer message</button>
+</form>
+=======
 
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -129,4 +163,5 @@
         </div>
     </div>
 </section>
+>>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
 {% endblock %}

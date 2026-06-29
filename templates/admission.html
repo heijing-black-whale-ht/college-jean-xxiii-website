@@ -1,0 +1,90 @@
+{% extends "base.html"%}
+
+{% block title %}Admission - College jean XXIII{% enblock %}
+
+{% block content %}
+<div class="container my-5">
+
+    <div  class="p-5 mb-4 bg-light rounded-3 text-center text-withe" style="background: linear-gradient (rgba(0, 0, 0.6), rgba(0, 0, 0.6)), url ('/static/images/school.jpg') no-repeat center center; background-size: cover;">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Inscriptions & Admissions</h1>
+            <p class="col-md-8 mx-auto fs-4">Découvrez les étapes d'inscription et d'admission au Collège Jean XXIII. Rejoignez notre communauté éducative dynamique et engagée pour un avenir prometteur.</p>
+            <a href="processus" class="btn btn-primary btn-lg px-4">Decouvrir les etapes</a>
+        </div>
+    </div>
+    <section id="processus" class="py-5">
+        <h2 class="text-center mb-4">Notre processus D'admission</h2>
+        <div class="row g-4 text center">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card body".
+                <div class="p-3 bg-primary text-white rounded-circle d-inline-block mb-3" style="width: 50px; height: 50px; line-height: 20px;">1</div>
+                <h5 class="card-title">Dossier de candidature</h5>
+                <p class="card-text">Remplisez ou retirez le formulaire d'inscription au secrétariat de l'école ou Telechargez-le directement ici.</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <divdiv class="card h-100 shadow-sm border-0">
+                <div class="card body".
+                <div class="p-3 bg-primary text-white rounded-circle d-inline-block mb-3" style="width: 50px; height: 50px; line-height: 20px;">2</div>
+                <h5 class="card-title> Depot des pieces</h5>
+                <p class="card text">Soumettez les pieces requises (bulletin precedents, acte de naissance) pour l'etude du dossier</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <divdiv class="card h-100 shadow-sm border-0">
+                <div class="card body">
+                <div class="p-3 bg-primary text-white rounded-circle d-inline-block mb-3" style="width: 50px; height: 50px; line-height: 20px;">3</div>
+                <h5 class="card-title">Entretien & Validation</h5>
+                <p class="crad-text">Un entretien peut etre organise pour mieux connaitre le candidat et sa famille. La decision d'admission est communiquee apres l'etude du dossier.</p>
+                </div>
+                </div.
+            </div>
+        </section>
+        <hr class="my-5">
+
+        <div class="row g-5">
+            <div class="col-md-6">
+            <h3 class="mb-3">Pièces à fournir</h3>
+                <p>Veuillez preparer les documents suivants pour finaliser l'inscription :</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> 2 Photos d'identité recentes</li>
+                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Copie du bulletin scolaire precedent</li>
+                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Copie de l'acte de naissance</li>
+                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-sucess me-2"></i>Frais d'inscription</li>
+                </ul>
+                <div class="mt-4">
+                    <a href="#" class="btn btn-outline-danger"><i class="bi bi-file-earmark-pdf"></i> Télécharger le formulaire PDF</a>
+                </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 border rounded shadow-sm bg-light">
+                <h3 class="mb-3">une question?</h3>
+    <p class="text-muted">laissez-nous vos coordonnees et le service des admissions vous recontactera.</p>
+    <form action="#" method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">Adresse Email</label>
+            <input type="email" class="formm-control" id="email"required>
+            </div>
+            <div class="mb-3">
+                <label for="classe" class="form-label">Classe Souhaitee</label>
+                <select class="form-select" id="classe">
+                    <option selected>Choisir...</option>
+                    <option value="7e">7eme AF</option>
+                    <option value="8e"> 8eme AF</option>
+                    <option value="9e"> 9eme</option>
+                    <option value="NS1">Nouveau secondaire 1 (NS1)</option>
+                    <option value="NS2">Nouveau secondaire 2 (Ns2)</option>
+                    <option value="NS3">Nouveau secondaire 3 (NS3)</option>
+                    <option value="NS4"> Nouveau secondaire 4 (NS4)</option>
+                    </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Envoyer la demande</button>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+
+                </div>
+                {% endblock %}
