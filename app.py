@@ -118,7 +118,6 @@ def home():
     latest_updates = Event.query.order_by(Event.id.desc()).limit(5).all()
     # Pass the updates into the homepage template
     return render_template('index.html', updates=latest_updates)
->>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
 
 @app.route('/about')
 def about():
@@ -126,16 +125,6 @@ def about():
 
 @app.route('/events')
 def events():
-<<<<<<< HEAD
-    return render_template('events.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
-=======
     public_events = Event.query.order_by(Event.id.desc()).all()
     return render_template('events.html', events=public_events)
 
@@ -355,6 +344,9 @@ Former les intelligences, façonner les caractères.
 def terms():
     return render_template('terms.html')
 
+@app.route('/admission')
+def admission():
+    return render_template('admission.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
->>>>>>> b0d76fe32022216727b3b345e4d9f81f761bfaac
