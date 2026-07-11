@@ -1,4 +1,4 @@
-# NEW BACKEND UPDATES 
+# NEW BACKEND UPDATES
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
@@ -344,6 +344,10 @@ Former les intelligences, façonner les caractères.
 @app.route('/terms')
 def terms():
     return render_template('terms.html')
+
+@app.route('/admission')
+def admission():
+    return render_template('admission.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
