@@ -22,7 +22,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', 'default_fallback_development_key')
+app.secret_key = os.environ['SECRET_KEY']
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -75,10 +75,10 @@ with app.app_context():
     db.create_all()
      
     # Seed the administrator account safely using environment variables
-    if not User.query.filter_by(username='admin').first():
-        admin = User(username='admin')
-        # Pulls from .env; uses a secure fallback if .env is missing locally
-        secure_admin_password = os.getenv('ADMIN_PASSWORD', 'admin1234')
+    admin_username = os.environ['ADMIN_USERNAME']
+    if not User.query.filter_by(username=admin_username).first():
+        admin = User(username=admin_username)
+        secure_admin_password = os.environ['ADMIN_PASSWORD']
         admin.set_password(secure_admin_password)
 
         db.session.add(admin)
