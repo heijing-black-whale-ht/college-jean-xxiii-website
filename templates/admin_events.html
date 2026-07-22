@@ -6,15 +6,86 @@
     <title>Gestion des Événements - Admin</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
-<body class="bg-light">
+<body class="bg-light admin-page">
+<style>
+    .admin-page {
+        background: #f4f7fb !important;
+        color: #172033;
+    }
 
-<div class="container py-5">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-5">
+    .admin-shell {
+        max-width: 1320px;
+    }
+
+    .admin-header {
+        padding: 1.5rem 1.75rem;
+        background: rgba(255, 255, 255, .82);
+        border: 1px solid rgba(148, 163, 184, .2);
+        border-radius: 1.25rem;
+        box-shadow: 0 .75rem 2rem rgba(15, 23, 42, .06);
+    }
+
+    .admin-card {
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, .18) !important;
+        box-shadow: 0 .75rem 2rem rgba(15, 23, 42, .06) !important;
+    }
+
+    .admin-card .card-header {
+        padding: 1.15rem 1.4rem;
+        background: linear-gradient(135deg, #111827, #273449) !important;
+    }
+
+    .admin-events-card .card-header {
+        background: linear-gradient(135deg, #0d6efd, #084298) !important;
+    }
+
+    .admin-card .card-body {
+        padding: 1.5rem;
+    }
+
+    .admin-page .form-control,
+    .admin-page .form-select {
+        border-color: #d9e1ec;
+        border-radius: .75rem;
+        padding-top: .7rem;
+        padding-bottom: .7rem;
+    }
+
+    .admin-page .form-control:focus,
+    .admin-page .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .12);
+    }
+
+    .event-row {
+        padding: 1.35rem 1.5rem !important;
+        border-bottom: 1px solid #edf1f6 !important;
+        transition: background-color .2s ease;
+    }
+
+    .event-row:hover {
+        background: #f8fbff;
+    }
+
+    .event-actions .btn {
+        min-width: 92px;
+        border-radius: .65rem;
+    }
+
+    .admin-page .modal-content {
+        border: 0;
+        box-shadow: 0 1.5rem 4rem rgba(15, 23, 42, .2);
+    }
+</style>
+
+<div class="container admin-shell py-5">
+    <div class="admin-header d-flex flex-column flex-md-row justify-content-between align-items-start mb-5">
         <div>
-            <h2 class="fw-semibold">Tableau de Bord Administrateur</h2>
+            <h2 class="fw-semibold mb-2">Tableau de Bord Administrateur</h2>
             <p class="text-muted mb-0">Ajouter ou supprimer des événements sur le site du Collège.</p>
         </div>
-        <a href="{{ url_for('events') }}" class="btn btn-outline-secondary mt-3 mt-md-0">Voir la page publique ↗</a>
+            <a href="{{ url_for('events') }}" class="btn btn-outline-secondary rounded-pill px-4 mt-3 mt-md-0">Voir la page publique ↗</a>
     </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -29,7 +100,7 @@
 
     <div class="row gx-4 gy-4">
         <div class="col-lg-5">
-            <div class="card shadow-sm border-0 rounded-4">
+            <div class="card admin-card shadow-sm border-0 rounded-4">
                 <div class="card-header bg-dark text-white border-0 rounded-top-4">
                     <h5 class="card-title mb-0">Publier un Événement</h5>
                 </div>
@@ -57,14 +128,14 @@
                             <label for="description" class="form-label">Description / Détails</label>
                             <textarea class="form-control form-control-lg" id="description" name="description" rows="5" placeholder="Description de la cérémonie..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-4">Enregistrer et Publier</button>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">Enregistrer et Publier</button>
                     </form>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-7">
-            <div class="card shadow-sm border-0 rounded-4">
+            <div class="card admin-card admin-events-card shadow-sm border-0 rounded-4">
                 <div class="card-header bg-primary text-white border-0 rounded-top-4">
                     <h5 class="card-title mb-0">Événements en ligne ({{ events|length }})</h5>
                 </div>
@@ -72,7 +143,7 @@
                     {% if events %}
                         <div class="list-group list-group-flush">
                             {% for event in events %}
-                                <div class="list-group-item p-3 d-flex justify-content-between align-items-start border-0">
+                                <div class="list-group-item event-row d-flex justify-content-between align-items-start border-0">
                                     <div class="me-3 flex-grow-1">
                                         <div class="d-flex align-items-center gap-2 mb-2">
                                             <h6 class="fw-semibold text-primary mb-0">{{ event.title }}</h6>
@@ -81,7 +152,7 @@
                                         <small class="text-muted">{{ event.date_str }}</small>
                                         <p class="mb-0 text-muted small mt-2" style="white-space: pre-line;">{{ event.description }}</p>
                                     </div>
-                                    <div class="d-flex flex-column gap-2 ms-3">
+                                    <div class="event-actions d-flex flex-column gap-2 ms-3">
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ event.id }}">Modifier</button>
                                         <form action="{{ url_for('delete_event', event_id=event.id) }}" method="POST" onsubmit="return confirm('Supprimer cet événement définitivement ?');">
                                             <button type="submit" class="btn btn-sm btn-outline-danger">Supprimer</button>

@@ -6,7 +6,99 @@
     <title>{% block title %}Collège Jean XXIII{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+    <style>
+        @font-face {
+            font-family: 'Satoshi';
+            src: url("{{ url_for('static', filename='webfonts/satoshi-400.woff2') }}") format('woff2');
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Satoshi';
+            src: url("{{ url_for('static', filename='webfonts/satoshi-500.woff2') }}") format('woff2');
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Satoshi';
+            src: url("{{ url_for('static', filename='webfonts/satoshi-700.woff2') }}") format('woff2');
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Syne';
+            src: url("{{ url_for('static', filename='webfonts/syne-400.ttf') }}") format('truetype');
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Syne';
+            src: url("{{ url_for('static', filename='webfonts/syne-500.ttf') }}") format('truetype');
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Syne';
+            src: url("{{ url_for('static', filename='webfonts/syne-600.ttf') }}") format('truetype');
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Syne';
+            src: url("{{ url_for('static', filename='webfonts/syne-700.ttf') }}") format('truetype');
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Syne';
+            src: url("{{ url_for('static', filename='webfonts/syne-800.ttf') }}") format('truetype');
+            font-style: normal;
+            font-weight: 800;
+            font-display: swap;
+        }
+
+        :root {
+            --font-body: 'Satoshi', system-ui, sans-serif;
+            --font-heading: 'Syne', 'Satoshi', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .navbar-brand {
+            font-family: var(--font-heading);
+        }
+
+        .site-icon {
+            width: 1.25em;
+            height: 1.25em;
+            vertical-align: -0.2em;
+        }
+
+        .site-icon-light {
+            filter: brightness(0) invert(1);
+        }
+
+        .site-icon-success {
+            filter: invert(47%) sepia(74%) saturate(493%) hue-rotate(92deg) brightness(91%) contrast(89%);
+        }
+    </style>
 </head>
 <body>
 
@@ -56,13 +148,13 @@
             <div class="d-flex align-items-center order-lg-last gap-3">
 
                 <button id="searchToggle" class="btn btn-link text-light opacity-75 hover-opacity-100 p-0 border-0" aria-label="Search">
-                    <i class="fas fa-search fs-5"></i>
+                    <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/search.svg') }}" alt="">
                 </button>
 
                 <a href="#" class="text-light opacity-75 hover-opacity-100 d-lg-none" id="hamburger" 
                    data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle Menu">
-                    <i class="fas fa-bars fs-5"></i>
+                    <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/menu.svg') }}" alt="">
                 </a>
             </div>
 
@@ -139,13 +231,13 @@
                 <h5 class="text-uppercase fw-bold fs-6 mb-2 tracking-wide text-secondary text-center text-md-start">Connectez-vous avec nous</h5>
                 <div class="d-flex gap-3 justify-content-center justify-content-md-start mt-1">
                     <a href="https://facebook.com" target="_blank" class="text-light opacity-75 hover-opacity-100 fs-4" aria-label="Facebook">
-                        <i class="fab fa-facebook"></i>
+                        <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/facebook.svg') }}" alt="">
                     </a>
                     <a href="https://instagram.com" target="_blank" class="text-light opacity-75 hover-opacity-100 fs-4" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
+                        <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/instagram.svg') }}" alt="">
                     </a>
                     <a href="https://twitter.com" target="_blank" class="text-light opacity-75 hover-opacity-100 fs-4" aria-label="Twitter/X">
-                        <i class="fab fa-x-twitter"></i>
+                        <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/x.svg') }}" alt="">
                     </a>
                 </div>
             </div>
@@ -157,7 +249,7 @@
                         <ul class="list-unstyled d-flex flex-column gap-1 mb-0 text-center text-md-start">
                             <li><a href="{{ url_for('admission') }}" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Admission</a></li>
                             <li><a href="{{ url_for('events') }}" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Évènements</a></li>
-                            <li><a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Services</a></li>
+                            <li><a href="{{ url_for('services') }}" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Services</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -181,7 +273,7 @@
                     <h5 class="text-uppercase fw-bold fs-6 mb-2 tracking-wide text-secondary text-center text-md-end">Liens Rapides</h5>
                     <nav>
                         <ul class="list-unstyled d-flex flex-column gap-1 mb-0 text-center text-md-end">
-                            <li><a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Staff</a></li>
+                            <li><a href="{{ url_for('staff') }}" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Staff</a></li>
                             <li><a href="{{ url_for('contact') }}" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Contacts</a></li>
 
                             <li><a href="#" class="text-decoration-none text-light opacity-75 hover-opacity-100 small">Portail Élève</a></li>

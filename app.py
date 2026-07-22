@@ -349,5 +349,13 @@ def terms():
 def admission():
     return render_template('admission.html')
 
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/staff')
+def staff():
+    return render_template('staff.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
