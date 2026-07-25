@@ -74,6 +74,83 @@
         :root {
             --font-body: 'Satoshi', system-ui, sans-serif;
             --font-heading: 'Syne', 'Satoshi', system-ui, sans-serif;
+            --brand-red: #8A0000;
+            --brand-red-rgb: 138, 0, 0;
+            --bs-blue: var(--brand-red);
+            --bs-cyan: var(--brand-red);
+            --bs-indigo: var(--brand-red);
+            --bs-primary: var(--brand-red);
+            --bs-primary-rgb: var(--brand-red-rgb);
+            --bs-primary-text-emphasis: #5b0000;
+            --bs-primary-bg-subtle: #f8eaea;
+            --bs-primary-border-subtle: #e7b8b8;
+            --bs-info: var(--brand-red);
+            --bs-info-rgb: var(--brand-red-rgb);
+            --bs-info-text-emphasis: #5b0000;
+            --bs-info-bg-subtle: #f8eaea;
+            --bs-info-border-subtle: #e7b8b8;
+            --bs-link-color: var(--brand-red);
+            --bs-link-color-rgb: var(--brand-red-rgb);
+            --bs-link-hover-color: #5f0000;
+            --bs-link-hover-color-rgb: 95, 0, 0;
+            --bs-btn-focus-shadow-rgb: var(--brand-red-rgb);
+            --bs-focus-ring-color: rgba(138, 0, 0, 0.25);
+        }
+
+        .text-primary,
+        .text-info,
+        .link-primary,
+        .link-info,
+        .link-primary:hover,
+        .link-primary:focus,
+        .link-info:hover,
+        .link-info:focus {
+            color: var(--brand-red) !important;
+        }
+
+        .bg-primary,
+        .bg-info,
+        .text-bg-primary,
+        .text-bg-info {
+            background-color: var(--brand-red) !important;
+            color: #fff !important;
+        }
+
+        .border-primary,
+        .border-info {
+            border-color: var(--brand-red) !important;
+        }
+
+        .btn-primary,
+        .btn-info,
+        .btn-outline-primary,
+        .btn-outline-info {
+            background-color: var(--brand-red) !important;
+            border-color: var(--brand-red) !important;
+            color: #fff !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-info {
+            background-color: transparent !important;
+            color: var(--brand-red) !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active,
+        .btn-info:hover,
+        .btn-info:focus,
+        .btn-info:active,
+        .btn-outline-primary:hover,
+        .btn-outline-primary:focus,
+        .btn-outline-primary:active,
+        .btn-outline-info:hover,
+        .btn-outline-info:focus,
+        .btn-outline-info:active {
+            background-color: #5f0000 !important;
+            border-color: #5f0000 !important;
+            color: #fff !important;
         }
 
         body {

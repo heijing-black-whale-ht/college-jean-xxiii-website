@@ -22,7 +22,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
 app = Flask(__name__)
-app.secret_key = os.environ['SECRET_KEY']
+app.secret_key = os.getenv('SECRET_KEY', 'dev-secret-key')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -38,8 +38,8 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME', 'collegejeanxxiii2000@gmail.com')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD', '')
 app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
 
 mail = Mail(app)
@@ -75,10 +75,10 @@ with app.app_context():
     db.create_all()
      
     # Seed the administrator account safely using environment variables
-    admin_username = os.environ['ADMIN_USERNAME']
+    admin_username = os.getenv('ADMIN_USERNAME', 'admin')
     if not User.query.filter_by(username=admin_username).first():
         admin = User(username=admin_username)
-        secure_admin_password = os.environ['ADMIN_PASSWORD']
+        secure_admin_password = os.getenv('ADMIN_PASSWORD', 'admin')
         admin.set_password(secure_admin_password)
 
         db.session.add(admin)
@@ -242,14 +242,14 @@ Message:
         customer_msg.html = f"""
 <!DOCTYPE html>
 <html>
-<body style="margin:0; padding:0; background:#0b1220; font-family:Arial, sans-serif; color:#e2e8f0;">
+<body style="margin:0; padding:0; background:#2b0f10; font-family:Arial, sans-serif; color:#e2e8f0;">
 
-<table width="100%" cellpadding="0" cellspacing="0" style="padding:30px; background:#0b1220;">
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:30px; background:#2b0f10;">
 <tr>
 <td align="center">
 
 <table width="650" cellpadding="0" cellspacing="0"
-       style="background:#111827; border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.25);">
+       style="background:#5a1212; border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.25);">
 
 <tr>
 <td style="background:#EDE8DO; padding:28px 24px; text-align:center;">
@@ -271,7 +271,7 @@ Votre demande a bien été reçue.
 </tr>
 
 <tr>
-<td style="padding:36px 34px; background:#0f172a;">
+<td style="padding:36px 34px; background:#2b0f10;">
 
 <p style="margin:0 0 18px; font-size:16px; line-height:1.75; color:#e2e8f0;">
 Bonjour <strong style="color:#ffffff;">{sender_name}</strong>,
@@ -281,7 +281,7 @@ Bonjour <strong style="color:#ffffff;">{sender_name}</strong>,
 Nous vous remercions d'avoir contacté le Collège Jean XXIII. Votre message a été transmis à l'administration et sera traité dans les meilleurs délais.
 </p>
 
-<div style="background:#111827; border-left:4px solid #8B0000; padding:18px 18px 16px; margin:20px 0 24px; border-radius:10px;">
+<div style="background:#5a1212; border-left:4px solid #8A0000; padding:18px 18px 16px; margin:20px 0 24px; border-radius:10px;">
 <strong style="display:block; color:#ffffff; font-size:15px; margin-bottom:10px;">Résumé de votre message :</strong>
 <p style="margin:0; font-size:14px; line-height:1.8; color:#cbd5e1;">
 {user_message}
@@ -301,7 +301,7 @@ Cordialement,<br>
 </tr>
 
 <tr>
-<td style="background:#0e1727; padding:22px 24px; text-align:center; font-size:13px; color:#94a3b8;">
+<td style="background:#3b1111; padding:22px 24px; text-align:center; font-size:13px; color:#e8caca;">
 
 Collège Jean XXIII<br>
 Former les intelligences, façonner les caractères.
