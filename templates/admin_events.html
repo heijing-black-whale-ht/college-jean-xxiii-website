@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8eaea',
+                            100: '#f2d4d4',
+                            500: '#8A0000',
+                            600: '#730000',
+                            700: '#5f0000',
+                            900: '#2b0f10'
+                        }
+                    },
+                    fontFamily: {
+                        body: ['Satoshi', 'system-ui', 'sans-serif'],
+                        heading: ['Syne', 'Satoshi', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
     <title>Gestion des Événements - Admin</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
-<body class="bg-light admin-page">
+<body class="bg-slate-100 text-slate-800 admin-page">
 <style>
     .admin-page {
         background: #f4f7fb !important;
@@ -79,8 +102,8 @@
     }
 </style>
 
-<div class="container admin-shell py-5">
-    <div class="admin-header d-flex flex-column flex-md-row justify-content-between align-items-start mb-5">
+<div class="container admin-shell mx-auto max-w-[1320px] py-5">
+    <div class="admin-header d-flex flex-column flex-md-row justify-content-between items-start mb-5 bg-white/80 ring-1 ring-slate-200/80 backdrop-blur-sm">
         <div>
             <h2 class="fw-semibold mb-2">Tableau de Bord Administrateur</h2>
             <p class="text-muted mb-0">Ajouter ou supprimer des événements sur le site du Collège.</p>

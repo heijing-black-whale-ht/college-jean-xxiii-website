@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8eaea',
+                            100: '#f2d4d4',
+                            500: '#8A0000',
+                            600: '#730000',
+                            700: '#5f0000',
+                            900: '#2b0f10'
+                        }
+                    },
+                    fontFamily: {
+                        body: ['Satoshi', 'system-ui', 'sans-serif'],
+                        heading: ['Syne', 'Satoshi', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
     <title>{% block title %}Collège Jean XXIII{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
     <style>
         @font-face {
             font-family: 'Satoshi';
@@ -177,7 +198,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 antialiased">
 
 
     <div class="modal fade" id="legalGatekeeperModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="gatekeeperLabel" aria-hidden="true">
@@ -210,7 +231,7 @@
 
 
     <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm ring-1 ring-white/10 backdrop-blur-sm">
         <div class="container-fluid px-2 px-sm-3 px-md-4">
             
             <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="{{ url_for('home') }}" style="max-width: 75%;">
@@ -286,7 +307,7 @@
     </main>
 
 
-    <footer class="bg-dark text-light pt-5 mt-auto border-top border-secondary">
+    <footer class="bg-slate-950 text-slate-200 pt-5 mt-auto border-t border-white/10">
     <div class="container-fluid px-4 pb-4">
         <div class="row text-center text-md-start align-items-start gy-4">
 
