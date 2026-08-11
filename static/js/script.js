@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchBarContainer = document.getElementById('searchBarContainer');
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    const hamburger = document.getElementById('hamburger');
-    const navbarNav = document.getElementById('navbarNav');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
 
-    if (hamburger && navbarNav) {
-        hamburger.addEventListener('click', function () {
-            navbarNav.classList.toggle('hidden');
+    if (mobileMenuToggle && mobileNav) {
+        mobileMenuToggle.addEventListener('click', function () {
+            mobileNav.classList.toggle('hidden');
         });
     }
 
