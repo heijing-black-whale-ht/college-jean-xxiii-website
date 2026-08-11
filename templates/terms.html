@@ -13,15 +13,8 @@
     }
 
     .legal-header {
-        padding: 2.5rem;
         background: linear-gradient(135deg, #2b0f10, #8A0000);
-        border-radius: 1.25rem;
         box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, .14);
-    }
-
-    .legal-header h1,
-    .legal-header p {
-        color: #fff !important;
     }
 
     .legal-toc {
@@ -30,82 +23,46 @@
         box-shadow: 0 .5rem 1.5rem rgba(15, 23, 42, .05);
     }
 
-    .legal-toc a {
-        display: inline-block;
-        padding: .35rem 0;
-        font-weight: 600;
-    }
-
     .legal-section {
         scroll-margin-top: 2rem;
     }
 
-    .legal-section > h2 {
-        padding-bottom: .75rem;
-        border-bottom: 2px solid #e7edf5;
-    }
-
     .legal-article {
-        padding: 1.25rem 1.5rem;
         border-left: 3px solid #dbeafe;
-        border-radius: 0 .75rem .75rem 0;
         background: rgba(248, 250, 252, .7);
-    }
-
-    .legal-article h3 {
-        color: #8A0000;
-    }
-
-    .legal-article p,
-    .legal-article li {
-        color: #475569;
-        line-height: 1.8;
-    }
-
-    .legal-page hr {
-        border-color: #cbd5e1;
-        opacity: .7;
-    }
-
-    @media (max-width: 575.98px) {
-        .legal-header { padding: 1.75rem; }
-        .legal-article { padding: 1rem; }
     }
 </style>
 
-<section class="legal-page py-5">
-    <div class="container legal-shell px-4 px-md-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                
-                <!-- Header -->
-                <div class="legal-header mb-5">
-                    <h1 class="mb-3">Termes et Conditions / Politique de Confidentialité</h1>
-                    <p class="text-muted">Dernière mise à jour: 2026</p>
+<section class="legal-page py-12">
+    <div class="container legal-shell mx-auto px-4 md:px-6">
+        <div class="flex justify-center">
+            <div class="w-full max-w-5xl">
+
+                <div class="legal-header mb-6 rounded-2xl p-8 md:p-10 text-white">
+                    <h1 class="mb-3 text-3xl md:text-4xl font-bold">Termes et Conditions / Politique de Confidentialité</h1>
+                    <p class="text-slate-200">Dernière mise à jour: 2026</p>
                 </div>
 
-                <!-- Table of Contents -->
-                <div class="legal-toc mb-5 p-4 bg-light rounded-4">
-                    <h5 class="mb-3">Table des matières</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#terms" class="text-decoration-none">Termes et Conditions</a></li>
-                        <li><a href="#privacy" class="text-decoration-none">Politique de Confidentialité</a></li>
+                <div class="legal-toc mb-6 rounded-2xl bg-white p-5 md:p-6">
+                    <h5 class="mb-3 text-lg font-bold text-slate-800">Table des matières</h5>
+                    <ul class="space-y-2 text-slate-700">
+                        <li><a href="#terms" class="inline-block font-semibold hover:text-brand-600">Termes et Conditions</a></li>
+                        <li><a href="#privacy" class="inline-block font-semibold hover:text-brand-600">Politique de Confidentialité</a></li>
                     </ul>
                 </div>
 
-                <!-- Section 1: Termes et Conditions -->
-                <section id="terms" class="legal-section mb-5">
-                    <h2 class="mb-4">Termes et Conditions</h2>
+                <section id="terms" class="legal-section mb-8">
+                    <h2 class="mb-4 pb-3 border-b-2 border-slate-200 text-2xl font-bold text-slate-900">Termes et Conditions</h2>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">1. Acceptation des Conditions</h3>
-                        <p>En accédant et en utilisant le site web du Collège Jean XXIII, vous acceptez d'être lié par les présents termes et conditions. Si vous n'acceptez pas ces termes, veuillez ne pas utiliser ce site.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">1. Acceptation des Conditions</h3>
+                        <p class="text-slate-600 leading-7">En accédant et en utilisant le site web du Collège Jean XXIII, vous acceptez d'être lié par les présents termes et conditions. Si vous n'acceptez pas ces termes, veuillez ne pas utiliser ce site.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">2. Utilisation Autorisée</h3>
-                        <p>Vous acceptez d'utiliser ce site uniquement à des fins légales et de manière qui ne porte pas atteinte aux droits d'autrui ou ne restreint pas leur utilisation et leur jouissance du site web. Le comportement prohibé comprend:</p>
-                        <ul class="ps-4">
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">2. Utilisation Autorisée</h3>
+                        <p class="text-slate-600 leading-7">Vous acceptez d'utiliser ce site uniquement à des fins légales et de manière qui ne porte pas atteinte aux droits d'autrui ou ne restreint pas leur utilisation et leur jouissance du site web. Le comportement prohibé comprend :</p>
+                        <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-600 leading-7">
                             <li>Harceler ou causer de la détresse ou de l'anxiété à une autre personne</li>
                             <li>Transmettre des contenus obscènes ou offensants</li>
                             <li>Perturber le flux normal de dialogue dans nos espaces web</li>
@@ -114,58 +71,57 @@
                         </ul>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">3. Propriété Intellectuelle</h3>
-                        <p>Le contenu du site web, y compris, mais sans s'y limiter, le texte, les graphiques, les logos, les images et les logiciels, est la propriété du Collège Jean XXIII ou de ses fournisseurs de contenu et est protégé par les lois internationales sur les droits d'auteur et les droits de propriété intellectuelle.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">3. Propriété Intellectuelle</h3>
+                        <p class="text-slate-600 leading-7">Le contenu du site web, y compris, mais sans s'y limiter, le texte, les graphiques, les logos, les images et les logiciels, est la propriété du Collège Jean XXIII ou de ses fournisseurs de contenu et est protégé par les lois internationales sur les droits d'auteur et les droits de propriété intellectuelle.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">4. Limitation de Responsabilité</h3>
-                        <p>Le Collège Jean XXIII ne peut être tenu responsable de tout dommage direct, indirect, accessoire, spécial ou consécutif découlant de ou lié à votre utilisation du site web, y compris, mais sans s'y limiter, la perte de profits, la perte de données ou l'interruption d'activité.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">4. Limitation de Responsabilité</h3>
+                        <p class="text-slate-600 leading-7">Le Collège Jean XXIII ne peut être tenu responsable de tout dommage direct, indirect, accessoire, spécial ou consécutif découlant de ou lié à votre utilisation du site web, y compris, mais sans s'y limiter, la perte de profits, la perte de données ou l'interruption d'activité.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">5. Modifications des Termes</h3>
-                        <p>Le Collège Jean XXIII se réserve le droit de modifier ces termes et conditions à tout moment. Les modifications seront efficaces dès leur publication sur le site web.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">5. Modifications des Termes</h3>
+                        <p class="text-slate-600 leading-7">Le Collège Jean XXIII se réserve le droit de modifier ces termes et conditions à tout moment. Les modifications seront efficaces dès leur publication sur le site web.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">6. Liens vers des Sites Tiers</h3>
-                        <p>Notre site peut contenir des liens vers des sites web tiers. Le Collège Jean XXIII n'est pas responsable du contenu, de la précision ou des pratiques de ces sites externes. Votre utilisation de sites tiers est soumise à leurs conditions.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">6. Liens vers des Sites Tiers</h3>
+                        <p class="text-slate-600 leading-7">Notre site peut contenir des liens vers des sites web tiers. Le Collège Jean XXIII n'est pas responsable du contenu, de la précision ou des pratiques de ces sites externes. Votre utilisation de sites tiers est soumise à leurs conditions.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">7. Loi Applicable</h3>
-                        <p>Ces termes et conditions sont régis par les lois d'Haïti et vous acceptez la juridiction exclusive des tribunaux compétents en Haïti.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">7. Loi Applicable</h3>
+                        <p class="text-slate-600 leading-7">Ces termes et conditions sont régis par les lois d'Haïti et vous acceptez la juridiction exclusive des tribunaux compétents en Haïti.</p>
                     </article>
                 </section>
 
-                <hr class="my-5">
+                <hr class="my-8 border-slate-200">
 
-                <!-- Section 2: Politique de Confidentialité -->
-                <section id="privacy" class="legal-section mb-5">
-                    <h2 class="mb-4">Politique de Confidentialité</h2>
+                <section id="privacy" class="legal-section mb-8">
+                    <h2 class="mb-4 pb-3 border-b-2 border-slate-200 text-2xl font-bold text-slate-900">Politique de Confidentialité</h2>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">1. Introduction</h3>
-                        <p>Le Collège Jean XXIII s'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et sauvegardons vos informations.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">1. Introduction</h3>
+                        <p class="text-slate-600 leading-7">Le Collège Jean XXIII s'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et sauvegardons vos informations.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">2. Informations que Nous Collectons</h3>
-                        <p>Nous pouvons recueillir des informations vous concernant de manière directe et indirecte, ainsi que de tiers. Les informations que nous collectons peuvent inclure:</p>
-                        <ul class="ps-4">
-                            <li><strong>Informations Personnelles:</strong> Nom, adresse électronique, numéro de téléphone, adresse postale</li>
-                            <li><strong>Informations d'Utilisation:</strong> Type de navigateur, pages visitées, durée de la visite, adresse IP</li>
-                            <li><strong>Informations Académiques:</strong> Données relatives à votre ou votre enfant (si applicable), antécédents d'admission</li>
-                            <li><strong>Informations de Communication:</strong> Contenu de toute communication que vous nous envoyez</li>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">2. Informations que Nous Collectons</h3>
+                        <p class="text-slate-600 leading-7">Nous pouvons recueillir des informations vous concernant de manière directe et indirecte, ainsi que de tiers. Les informations que nous collectons peuvent inclure :</p>
+                        <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-600 leading-7">
+                            <li><strong>Informations Personnelles :</strong> Nom, adresse électronique, numéro de téléphone, adresse postale</li>
+                            <li><strong>Informations d'Utilisation :</strong> Type de navigateur, pages visitées, durée de la visite, adresse IP</li>
+                            <li><strong>Informations Académiques :</strong> Données relatives à votre ou votre enfant (si applicable), antécédents d'admission</li>
+                            <li><strong>Informations de Communication :</strong> Contenu de toute communication que vous nous envoyez</li>
                         </ul>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">3. Utilisation de Vos Informations</h3>
-                        <p>Nous utilisons les informations que nous recueillons aux fins suivantes:</p>
-                        <ul class="ps-4">
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">3. Utilisation de Vos Informations</h3>
+                        <p class="text-slate-600 leading-7">Nous utilisons les informations que nous recueillons aux fins suivantes :</p>
+                        <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-600 leading-7">
                             <li>Fournir et maintenir nos services</li>
                             <li>Traiter les demandes d'admission et les inquiétudes</li>
                             <li>Communiquer des mises à jour importantes et des informations institutionnelles</li>
@@ -175,56 +131,56 @@
                         </ul>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">4. Partage d'Informations</h3>
-                        <p>Nous ne vendons, n'échangeons ni ne divulguons vos informations personnelles à des tiers, sauf:</p>
-                        <ul class="ps-4">
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">4. Partage d'Informations</h3>
+                        <p class="text-slate-600 leading-7">Nous ne vendons, n'échangeons ni ne divulguons vos informations personnelles à des tiers, sauf :</p>
+                        <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-600 leading-7">
                             <li>Aux services tiers qui nous assistent dans l'exploitation du site web et la conduite de nos activités (liés par des obligations de confidentialité)</li>
                             <li>Lorsque requis par la loi ou pour protéger nos droits</li>
                             <li>Avec votre consentement explicite</li>
                         </ul>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">5. Sécurité des Données</h3>
-                        <p>Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet n'est 100% sécurisée.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">5. Sécurité des Données</h3>
+                        <p class="text-slate-600 leading-7">Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet n'est 100% sécurisée.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">6. Cookies</h3>
-                        <p>Notre site web peut utiliser des cookies pour améliorer votre expérience. Un cookie est un fichier texte stocké sur votre appareil qui nous aide à reconnaître vos visiteurs récurrents et à retenir certaines informations sur vous. Vous pouvez paramétrer votre navigateur pour refuser les cookies ou vous alerter de leur envoi.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">6. Cookies</h3>
+                        <p class="text-slate-600 leading-7">Notre site web peut utiliser des cookies pour améliorer votre expérience. Un cookie est un fichier texte stocké sur votre appareil qui nous aide à reconnaître vos visiteurs récurrents et à retenir certaines informations sur vous. Vous pouvez paramétrer votre navigateur pour refuser les cookies ou vous alerter de leur envoi.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">7. Vos Droits de Confidentialité</h3>
-                        <p>Selon la juridiction applicable, vous pouvez avoir le droit de:</p>
-                        <ul class="ps-4">
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">7. Vos Droits de Confidentialité</h3>
+                        <p class="text-slate-600 leading-7">Selon la juridiction applicable, vous pouvez avoir le droit de :</p>
+                        <ul class="mt-3 list-disc space-y-2 pl-5 text-slate-600 leading-7">
                             <li>Accéder aux informations personnelles que nous détenons sur vous</li>
                             <li>Demander la correction ou la mise à jour de vos informations</li>
                             <li>Demander la suppression de vos informations</li>
                             <li>Retirer votre consentement au traitement de vos données</li>
                         </ul>
-                        <p>Pour exercer ces droits, veuillez nous contacter à l'aide des informations de contact ci-dessous.</p>
+                        <p class="mt-3 text-slate-600 leading-7">Pour exercer ces droits, veuillez nous contacter à l'aide des informations de contact ci-dessous.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">8. Rétention des Données</h3>
-                        <p>Nous conservons vos informations personnelles aussi longtemps que nécessaire pour atteindre les objectifs énoncés dans cette politique de confidentialité, ou selon les exigences légales.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">8. Rétention des Données</h3>
+                        <p class="text-slate-600 leading-7">Nous conservons vos informations personnelles aussi longtemps que nécessaire pour atteindre les objectifs énoncés dans cette politique de confidentialité, ou selon les exigences légales.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">9. Modifications de la Politique</h3>
-                        <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications seront publiées sur cette page avec une date de mise à jour mise à jour. Votre utilisation continue du site suivant la publication des modifications constitue votre acceptation des modifications.</p>
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">9. Modifications de la Politique</h3>
+                        <p class="text-slate-600 leading-7">Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications seront publiées sur cette page avec une date de mise à jour. Votre utilisation continue du site suivant la publication des modifications constitue votre acceptation des modifications.</p>
                     </article>
 
-                    <article class="legal-article mb-4">
-                        <h3 class="mb-3">10. Nous Contacter</h3>
-                        <p>Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques en matière de confidentialité, veuillez nous contacter:</p>
-                        <address style="font-style: normal;" class="ps-4">
+                    <article class="legal-article mb-4 rounded-r-xl p-5 md:p-6">
+                        <h3 class="mb-3 text-xl font-bold text-brand-700">10. Nous Contacter</h3>
+                        <p class="text-slate-600 leading-7">Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques en matière de confidentialité, veuillez nous contacter :</p>
+                        <address class="mt-3 not-italic text-slate-700 leading-7">
                             <strong>Collège Jean XXIII, F.S.C.</strong><br>
                             Babiole, Turgeau<br>
                             Port-au-Prince, Haiti, HT6110<br>
-                            Email: <a href="mailto:collegejeanxxiii2000@gmail.com">collegejeanxxiii2000@gmail.com</a>
+                            Email: <a href="mailto:collegejeanxxiii2000@gmail.com" class="text-brand-700 hover:underline">collegejeanxxiii2000@gmail.com</a>
                         </address>
                     </article>
                 </section>
