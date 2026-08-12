@@ -4,56 +4,88 @@
 
 {% block content %}
 
-<section class="relative overflow-hidden bg-slate-950 text-white">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.12),transparent_32%),linear-gradient(110deg,rgba(8,12,27,0.96)_0%,rgba(8,12,27,0.78)_48%,rgba(8,12,27,0.5)_100%)]"></div>
-    <div class="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
-        <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div class="space-y-6 text-center lg:text-left">
-                <div class="mx-auto inline-flex items-center gap-3 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-brand-100 sm:mx-0">
-                    <span class="block h-px w-8 bg-brand-300"></span>
-                    Former les intelligences, façonner les caractères
-                </div>
-                <h1 class="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-                    Bienvenue au <span class="text-brand-300">Collège Jean XXIII</span>
-                </h1>
-                <p class="max-w-2xl text-base leading-8 text-slate-300 sm:text-xl">
-                    Une communauté éducative engagée pour accompagner chaque élève vers l'excellence, avec exigence, bienveillance et vision.
-                </p>
-                <p class="text-sm italic text-slate-400">« Visons toujours l'excellence »</p>
-                <div class="mx-auto flex max-w-md flex-col gap-4 sm:flex-row sm:max-w-none lg:mx-0">
-                    <a href="{{ url_for('about') }}" class="inline-flex items-center justify-center rounded-full bg-brand-500 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-600">Découvrir le collège</a>
-                    <a href="{{ url_for('contact') }}" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Nous contacter</a>
-                </div>
+<!-- PART 1: Welcome Hero Screen with Background Image Overlay -->
+<!-- Applied center/cover no-repeat along with a dark mask linear-gradient style directly on this section container -->
+<section class="relative overflow-hidden bg-slate-950 text-white py-6" style="background: linear-gradient(rgba(8, 12, 27, 0.45), rgba(8, 12, 27, 0.65)), url('{{ url_for('static', filename='images/bg-image.png') }}') center/cover no-repeat;">
+    
+    <!-- Retained your original radial design layer accents for extra aesthetic depth -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.08),transparent_32%)] pointer-events-none"></div>
+    
+    <!-- Hero inner spacing wrapper box -->
+    <div class="relative mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8">
+        <div class="space-y-6 text-center lg:text-left max-w-3xl lg:max-w-4xl">
+            
+            <!-- School Motto Label Badge -->
+            <div class="mx-auto inline-flex items-center gap-3 rounded-full border border-brand-500/30 bg-brand-500/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-brand-100 sm:mx-0 backdrop-blur-md">
+                <span class="block h-px w-8 bg-brand-300"></span>
+                Former les intelligences, façonner les caractères
             </div>
-            <div class="space-y-8 rounded-[2rem] border border-white/10 bg-slate-950/90 p-6 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-8">
+            
+            <!-- Main Title Header text -->
+            <!-- Added drop-shadow style adjustments to keep text readable against any photo patterns behind it -->
+            <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl drop-shadow-md">
+                Bienvenue au <span class="text-brand-300">Collège Jean XXIII</span>
+            </h1>
+            
+            <!-- Subheading paragraph -->
+            <p class="max-w-2xl text-base leading-8 text-slate-200 sm:text-xl drop-shadow">
+                Une communauté éducative engagée pour accompagner chaque élève vers l'excellence, avec exigence, bienveillance et vision.
+            </p>
+            
+            <!-- Quote emphasis -->
+            <p class="text-sm italic text-slate-300 drop-shadow">« Visons toujours l'excellence »</p>
+            
+            <!-- Action Navigation Buttons -->
+            <div class="mx-auto flex max-w-md flex-col gap-4 sm:flex-row sm:max-w-none lg:mx-0 pt-2">
+                <a href="{{ url_for('about') }}" class="inline-flex items-center justify-center rounded-full bg-brand-500 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-600">Découvrir le collège</a>
+                <a href="{{ url_for('contact') }}" class="inline-flex items-center justify-center rounded-full border border-white/20 bg-slate-900/60 backdrop-blur-md px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Nous contacter</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- PART 2: Engagement Block, Counter Badges, & Latest News Updates -->
+<!-- This keeps its pristine, clean professional theme interface look separate from the top background image -->
+<section class="relative overflow-hidden bg-slate-950 text-white py-4">
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        <!-- Layout Grid for Engagement details block container -->
+        <div class="grid gap-10">
+            <div class="space-y-8 rounded-[2rem] border border-white/10 bg-slate-900/40 p-6 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-8">
                 <div>
                     <span class="text-xs uppercase tracking-[0.32em] text-brand-300">Notre engagement</span>
                     <h2 class="mt-3 text-2xl font-semibold text-white">Grandir, apprendre et réussir ensemble.</h2>
                     <p class="mt-4 text-slate-300">Un cadre structurant et humain pour révéler le potentiel de chaque jeune.</p>
                 </div>
-                <div class="grid grid-cols-3 gap-4 sm:grid-cols-3">
-                    <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                
+                <!-- Stat Metric Number Boxes Row -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <div class="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 flex flex-col justify-between">
                         <p class="text-3xl font-semibold text-white">01</p>
-                        <p class="mt-3 text-sm uppercase tracking-[0.25em] text-slate-400">Communauté</p>
+                        <p class="mt-2 text-xs uppercase tracking-wider text-slate-400 sm:text-sm sm:tracking-[0.25em]">Communauté</p>
                     </div>
-                    <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                    <div class="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 flex flex-col justify-between">
                         <p class="text-3xl font-semibold text-white">F.S.C</p>
-                        <p class="mt-3 text-sm uppercase tracking-[0.25em] text-slate-400">Notre identité</p>
+                        <p class="mt-2 text-xs uppercase tracking-wider text-slate-400 sm:text-sm sm:tracking-[0.25em]">Notre identité</p>
                     </div>
-                    <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                    <div class="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5 flex flex-col justify-between">
                         <p class="text-3xl font-semibold text-white">100%</p>
-                        <p class="mt-3 text-sm uppercase tracking-[0.25em] text-slate-400">Engagement</p>
+                        <p class="mt-2 text-xs uppercase tracking-wider text-slate-400 sm:text-sm sm:tracking-[0.25em]">Engagement</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="mt-16 rounded-[1.5rem] border border-white/10 bg-white/95 p-4 shadow-2xl shadow-slate-950/10 sm:p-6">
+
+        <!-- News Updates Feed Section Container Panel -->
+        <div class="mt-12 rounded-[1.5rem] border border-white/10 bg-white/95 p-4 shadow-2xl shadow-slate-950/10 sm:p-6">
             <div class="grid items-center gap-4 lg:grid-cols-[auto_1fr]">
                 <div class="inline-flex items-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-brand-500/20">
                     <img class="site-icon site-icon-light mr-2" src="{{ url_for('static', filename='icons/bolt.svg') }}" alt=""> Dernières Nouvelles
                 </div>
                 <div class="text-sm text-slate-600">Restez informé des annonces importantes et des activités à venir du Collège Jean XXIII.</div>
             </div>
+            
             <div class="mt-4 rounded-[1.5rem] border border-slate-200/80 bg-slate-50 p-5">
                 {% if updates %}
                     <div class="space-y-4">
@@ -80,6 +112,7 @@
                 {% endif %}
             </div>
         </div>
+
     </div>
 </section>
 

@@ -357,5 +357,9 @@ def services():
 def staff():
     return render_template('staff.html')
 
+@app.route('/test-debug')
+def test_debug():
+    return "<h1>The server network is fine!</h1>"
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5001)

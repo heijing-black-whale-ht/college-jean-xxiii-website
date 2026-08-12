@@ -157,45 +157,56 @@
 
 
 
-    <header>
-        <nav class="bg-slate-950 text-slate-100 shadow-sm ring-1 ring-white/5 backdrop-blur-sm">
-            <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-                <a class="flex items-center gap-3" href="{{ url_for('home') }}">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="h-11 w-auto" />
-                    <span class="font-semibold tracking-[0.25em] text-sm sm:text-base">
-                        COLLEGE JEAN XXIII, F.S.C
-                    </span>
-                </a>
+<!-- Added "relative z-50" so the search container anchors to this element and sits on top of everything -->
+<header class="relative z-50">
+    <nav class="bg-slate-950 text-slate-100 shadow-sm ring-1 ring-white/5 backdrop-blur-sm">
+        <!-- Main row container: added overflow-hidden to prevent container bursting -->
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8 overflow-hidden">
+            
+            <!-- Left Side: Branding Wrapper -->
+            <a class="flex items-center gap-3 min-w-0 shrink" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="h-11 w-auto shrink-0" />
+                <span class="font-semibold tracking-[0.2em] text-[11px] min-[360px]:text-xs sm:text-base tracking-[0.25em] truncate">
+                    COLLEGE JEAN XXIII,<br> F.S.C
+                </span>
+            </a>
 
-                <div class="flex items-center gap-3">
-                    <button id="searchToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-100 hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500/50" aria-label="Search">
-                        <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/search.svg') }}" alt="">
-                    </button>
-                    <button id="mobileMenuToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-100 hover:bg-slate-900 md:hidden" aria-label="Toggle menu">
-                        <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/menu.svg') }}" alt="">
-                    </button>
-                </div>
-
-                <div id="desktopNav" class="hidden w-full md:flex md:w-auto md:flex-row md:items-center md:justify-end md:gap-4">
+            <!-- Right Side Wrapper: Houses Nav and Action Tools Together -->
+            <div class="flex items-center gap-4 shrink-0">
+                <!-- Desktop Navigation Menu (hidden on mobile) -->
+                <div id="desktopNav" class="hidden md:flex md:items-center md:gap-4">
                     <a href="{{ url_for('home') }}" class="rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-white bg-brand-500 shadow-lg shadow-brand-500/20 transition hover:bg-brand-600">Accueil</a>
                     <a href="{{ url_for('about') }}" class="rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">À Propos</a>
                     <a href="{{ url_for('events') }}" class="rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">Évènements</a>
                     <a href="{{ url_for('contact') }}" class="rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">Contacts</a>
                 </div>
-            </div>
 
-            <div id="mobileNav" class="hidden border-t border-slate-800 bg-slate-950/95 px-4 py-4 md:hidden">
-                <nav class="flex flex-col gap-2 text-center">
-                    <a href="{{ url_for('home') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white bg-brand-500">Accueil</a>
-                    <a href="{{ url_for('about') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">À Propos</a>
-                    <a href="{{ url_for('events') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">Évènements</a>
-                    <a href="{{ url_for('contact') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">Contacts</a>
-                </nav>
+                <!-- Interface Buttons (Search + Burger menu icon) -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="searchToggle" class="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-100 hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500/50" aria-label="Search">
+                        <img class="site-icon site-icon-light h-4 w-4" src="{{ url_for('static', filename='icons/search.svg') }}" alt="">
+                    </button>
+                    <button id="mobileMenuToggle" class="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-100 hover:bg-slate-900 md:hidden" aria-label="Toggle menu">
+                        <img class="site-icon site-icon-light h-4 w-4" src="{{ url_for('static', filename='icons/menu.svg') }}" alt="">
+                    </button>
+                </div>
             </div>
-        </nav>
-    </header>
+        </div>
 
-    <div id="searchBarContainer" class="hidden absolute right-0 top-full w-full bg-slate-950/95 border-t border-slate-700 shadow-2xl backdrop-blur-xl z-50">
+        <!-- Mobile Drawer Menu Dropdown -->
+        <div id="mobileNav" class="hidden border-t border-slate-800 bg-slate-950/95 px-4 py-4 md:hidden">
+            <nav class="flex flex-col gap-2 text-center">
+                <a href="{{ url_for('home') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white bg-brand-500">Accueil</a>
+                <a href="{{ url_for('about') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">À Propos</a>
+                <a href="{{ url_for('events') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">Évènements</a>
+                <a href="{{ url_for('contact') }}" class="rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-200 hover:bg-slate-900/80">Contacts</a>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- FIXED SEARCH CONTAINER MOVED HERE -->
+    <!-- It is now safely nested inside the header layout framework, out of the way of the nav overflow rule -->
+    <div id="searchBarContainer" class="hidden absolute left-0 top-full w-full bg-slate-950/95 border-b border-slate-800 shadow-2xl backdrop-blur-xl z-50">
         <div class="mx-auto flex max-w-md flex-col gap-3 px-4 py-4 sm:px-6">
             <input
                 type="text"
@@ -207,16 +218,7 @@
             <div id="searchResults" class="max-h-72 overflow-y-auto"></div>
         </div>
     </div>
-
-    <!--<div id="mobile-menu" class="mobile-nav" style="display: none;">
-                <ul>
-                    <li><a href="#">Admission</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Staff</a></li>
-                    <li><a href="#">Media</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
-                </ul>
-    </div>-->
+</header>
 
     <main>
         {% block content %}{% endblock %}
