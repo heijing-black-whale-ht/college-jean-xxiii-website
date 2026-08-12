@@ -7,32 +7,64 @@
     .admission-hero {
         min-height: 390px;
         background: linear-gradient(110deg, rgba(8, 12, 27, .94), rgba(13, 110, 253, .58)), url("{{ url_for('static', filename='images/bg-image1.png') }}") center / cover;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .admission-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(115, 54, 53, .15), transparent 32%);
+        pointer-events: none;
     }
 
     .admission-step, .document-panel, .question-panel {
         border: 1px solid rgba(148, 163, 184, .2);
-        transition: transform .25s ease, box-shadow .25s ease;
+        transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        background: rgba(255, 255, 255, .98);
     }
 
     .admission-step:hover, .document-panel:hover, .question-panel:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 1rem 2rem rgba(15, 23, 42, .1) !important;
+        transform: translateY(-6px);
+        box-shadow: 0 1.25rem 2.5rem rgba(115, 54, 53, .15) !important;
+        background: #fff;
     }
 
     .step-number {
-        width: 52px;
-        height: 52px;
+        width: 56px;
+        height: 56px;
         background: linear-gradient(135deg, #0d6efd, #084298);
-        box-shadow: 0 .5rem 1rem rgba(13, 110, 253, .25);
+        box-shadow: 0 .5rem 1.25rem rgba(13, 110, 253, .28);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.25rem;
     }
 
     .document-list .list-group-item {
-        padding: .9rem 0;
+        padding: 1rem 0;
         background: transparent;
-        border-color: rgba(148, 163, 184, .2);
+        border-color: rgba(148, 163, 184, .15);
     }
 
-    .question-panel { background: linear-gradient(145deg, #f8fafc, #eef4ff); }
+    .document-list .list-group-item:last-child {
+        border-bottom: none;
+    }
+
+    .question-panel { 
+        background: linear-gradient(145deg, #f8fafc, #eef4ff);
+    }
+
+    .section-subtitle {
+        font-size: 0.875rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
 
     @media (max-width: 575.98px) {
         .admission-hero { min-height: 360px; }
@@ -50,10 +82,10 @@
     </section>
 
     <section id="processus" class="py-3 py-md-4 mb-5" aria-labelledby="process-title">
-        <div class="text-center mb-4 mb-md-5">
-            <span class="text-primary text-uppercase fw-bold small">Un parcours simple et clair</span>
-            <h2 id="process-title" class="display-6 fw-bold text-dark mt-2 mb-3">Notre processus d'admission</h2>
-            <p class="text-secondary mx-auto mb-0" style="max-width: 650px;">Chaque étape nous permet de mieux vous accompagner et de préparer sereinement l'arrivée de votre enfant.</p>
+        <div class="mb-4 mb-md-5">
+            <span class="section-subtitle text-primary mb-2 d-block">Un parcours simple et clair</span>
+            <h2 id="process-title" class="display-6 fw-bold text-dark mb-3">Notre processus d'admission</h2>
+            <p class="text-secondary" style="max-width: 650px;">Chaque étape nous permet de mieux vous accompagner et de préparer sereinement l'arrivée de votre enfant.</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4">

@@ -1,41 +1,163 @@
 {% extends "base.html" %}
 
-{% block title %}Nos Services - College jean XXIII{% endblock %}
+{% block title %}Nos Services - Collège Jean XXIII{% endblock %}
 
 {% block content %}
-<div class="container my-5" style="font-family: 'segoe UI', sans-serif;">
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold mb-3" style="color: #8A0000;">Services & Vie scolaire</h1>
-        <p class="text-muted col-md-8 mx-auto fs-5">Au-delà de l'enseignement, nous offrons une gamme complète de services pour soutenir votre parcours académique et personnel.</p>
-    </div>
+<style>
+    .services-hero {
+        min-height: 390px;
+        background: linear-gradient(110deg, rgba(8, 12, 27, .94), rgba(115, 54, 53, .65)), url("{{ url_for('static', filename='images/bg-image1.png') }}") center / cover;
+    }
 
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-primary h-100">
-                <h4 class="fw-bold text-dark mb-3">Laboratoire informatique</h4>
-                <p class="text-muted mb-0">Accès à des ordinateurs et logiciels pour les étudiants.</p>
+    .service-card {
+        border: 1px solid rgba(148, 163, 184, .2);
+        transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        background: rgba(255, 255, 255, .98);
+    }
 
-            </div>
+    .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 1.25rem 2.5rem rgba(115, 54, 53, .15) !important;
+        background: #fff;
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(115, 54, 53, .1), rgba(13, 110, 253, .1));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .service-icon.primary { background: linear-gradient(135deg, rgba(13, 110, 253, .15), rgba(13, 110, 253, .05)); color: #0d6efd; }
+    .service-icon.success { background: linear-gradient(135deg, rgba(25, 135, 84, .15), rgba(25, 135, 84, .05)); color: #198754; }
+    .service-icon.danger { background: linear-gradient(135deg, rgba(220, 53, 69, .15), rgba(220, 53, 69, .05)); color: #dc3545; }
+    .service-icon.info { background: linear-gradient(135deg, rgba(23, 162, 184, .15), rgba(23, 162, 184, .05)); color: #17a2b8; }
+
+    .section-title-line {
+        width: 42px;
+        height: 4px;
+        border-radius: 2px;
+    }
+
+    @media (max-width: 575.98px) {
+        .services-hero { min-height: 360px; }
+    }
+</style>
+
+<div class="container py-5">
+    <!-- Hero Section -->
+    <section class="services-hero rounded-4 shadow-lg overflow-hidden text-center text-white mb-5" aria-labelledby="services-title">
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 px-4 py-5">
+            <span class="badge rounded-pill bg-light text-dark px-3 py-2 mb-3">Accompagnement pédagogique et personnel</span>
+            <h1 id="services-title" class="display-4 fw-bold mb-3">Services &amp; Vie scolaire</h1>
+            <p class="lead text-white-50 mx-auto mb-0" style="max-width: 700px;">Au-delà de l'enseignement, nous offrons une gamme complète de services pour soutenir votre parcours académique et personnel.</p>
         </div>
-        <div class="col-md-6">
-            <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-primary h-100">
-                <h4 class="fw-bold text-dark mb-3">Bibliothèque</h4>
-                <p class="text-muted mb-0">Une collection de livres et ressources pour la recherche et l'étude.</p>
+    </section>
+
+    <!-- Main Services -->
+    <section class="mb-5" aria-labelledby="main-services-title">
+        <div class="mb-4 mb-md-5">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <span class="bg-primary rounded-pill section-title-line"></span>
+                <h2 id="main-services-title" class="h3 fw-bold text-dark mb-0">Services pédagogiques</h2>
             </div>
+            <p class="text-secondary" style="max-width: 650px;">Nos services sont conçus pour assurer une expérience d'apprentissage complète et enrichissante.</p>
         </div>
-        <div class="col-md-6">
-            <div class="p-4 bg-white rounded-4 shadow-sm border-start border-4 border-info h-100">
-                <h4 class="fw-bold text-dark mb-3">Orientation académique</h4>
-                <p class="text-muted mb-0">Guidance et soutien pour l'orientation et les choix de carrière.</p>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon primary">📚</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Bibliothèque</h3>
+                        <p class="text-secondary mb-0">Une collection riche de livres et ressources pédagogiques pour la recherche, l'étude et le développement des connaissances.</p>
+                    </div>
                 </div>
             </div>
-        <div class="col-md-6">
-            <div class="p-4 bg-white rounded-4 shadow-sm border-start border-   4 border-info h-100">
-                <h4 class="fw-bold text-dark mb-3">Activités parascolaires</h4>
-                <p class="text-muted mb-0">Clubs, sports et événements pour enrichir l'expérience étudiante.</p>
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon primary">💻</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Laboratoire informatique</h3>
+                        <p class="text-secondary mb-0">Accès à des ordinateurs modernes et logiciels professionnels pour l'apprentissage des technologies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon success">🎯</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Orientation académique</h3>
+                        <p class="text-secondary mb-0">Guidance personnalisée et soutien pour l'orientation professionnelle et les choix de carrière.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon success">🏥</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Service de santé</h3>
+                        <p class="text-secondary mb-0">Infirmerie et soutien sanitaire pour le bien-être et la santé de nos élèves.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <hr class="my-5 opacity-10">
+
+    <!-- Extracurricular Activities -->
+    <section aria-labelledby="activities-title">
+        <div class="mb-4 mb-md-5">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <span class="bg-success rounded-pill section-title-line"></span>
+                <h2 id="activities-title" class="h3 fw-bold text-dark mb-0">Activités et vie scolaire</h2>
+            </div>
+            <p class="text-secondary" style="max-width: 650px;">Nous encourageons le développement personnel et social de nos élèves par des activités diversifiées.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon danger">⚽</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Activités parascolaires</h3>
+                        <p class="text-secondary mb-0">Clubs, sports et événements variés pour enrichir l'expérience scolaire et favoriser les liens.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon danger">🎨</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Clubs artistiques</h3>
+                        <p class="text-secondary mb-0">Espaces de créativité pour l'art, la musique, le théâtre et l'expression culturelle.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon info">🤝</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Aide aux étudiants</h3>
+                        <p class="text-secondary mb-0">Soutien académique, tutorat et accompagnement personnalisé pour la réussite de chacun.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="service-card card h-100 border-0 shadow-sm rounded-4 p-4">
+                    <div class="card-body p-0">
+                        <div class="service-icon info">🌍</div>
+                        <h3 class="h5 fw-bold text-dark mb-2">Sorties éducatives</h3>
+                        <p class="text-secondary mb-0">Voyages d'étude et sorties pédagogiques pour approfondir l'apprentissage en contexte réel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 {% endblock %}
