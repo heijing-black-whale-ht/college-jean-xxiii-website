@@ -4,48 +4,44 @@
 
 {% block content %}
 
-<section class="py-5 bg-dark text-light position-relative" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('{{ url_for('static', filename='images/bg-image.png') }}') center/cover no-repeat;">
-    <div class="container py-5 text-center">
-        <h1 class="fw-bold text-uppercase tracking-wide mb-3" style="font-size: clamp(2rem, 5vw, 3.5rem);">
-            Évènements à venir
-        </h1>
-        <p class="lead opacity-75 mx-auto text-white-50" style="max-width: 600px;">
-            Suivez l'agenda, les réunions et les moments forts de notre communauté scolaire.
-        </p>
+<section class="py-12 bg-slate-900 text-white relative" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('{{ url_for('static', filename='images/bg-image.png') }}') center/cover no-repeat;">
+    <div class="container mx-auto px-4 py-12 text-center">
+        <h1 class="font-bold uppercase tracking-wide mb-3 text-4xl sm:text-5xl" style="font-size: clamp(2rem, 5vw, 3.5rem);">Évènements à venir</h1>
+        <p class="mx-auto text-slate-300 max-w-2xl">Suivez l'agenda, les réunions et les moments forts de notre communauté scolaire.</p>
     </div>
 </section>
 
-<section class="py-5 bg-dark text-light">
-    <div class="container py-3">
-        <div class="row g-4 justify-content-center">
-            
+<section class="py-12 bg-slate-900 text-white">
+    <div class="container mx-auto px-4 py-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-center">
+
             {% if events %}
                 {% for event in events %}
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="card h-100 bg-black bg-opacity-40 border border-secondary border-opacity-25 text-light rounded shadow-sm">
-                            <div class="card-header border-0 bg-transparent pt-4 px-4 d-flex justify-content-between align-items-center">
-                                
+                    <div class="h-full">
+                        <div class="h-full rounded-xl border border-slate-700/30 bg-black/40 text-white shadow-sm">
+                            <div class="flex items-center justify-between gap-3 border-b border-slate-700/30 bg-transparent pt-4 px-4">
+
                                 {% if event.category == 'Réunion' %}
-                                    <span class="badge bg-warning text-dark text-uppercase tracking-wider fw-bold p-2" style="font-size: 0.65rem;">Réunion</span>
+                                    <span class="inline-block rounded px-2 py-1 bg-yellow-300 text-yellow-900 text-[0.65rem] font-bold uppercase tracking-wider">Réunion</span>
                                 {% elif event.category == 'Académie' %}
-                                    <span class="badge bg-primary text-uppercase tracking-wider fw-bold p-2" style="font-size: 0.65rem;">Académie</span>
+                                    <span class="inline-block rounded px-2 py-1 bg-blue-500 text-white text-[0.65rem] font-bold uppercase tracking-wider">Académie</span>
                                 {% elif event.category == 'Vie Scolaire' %}
-                                    <span class="badge bg-success text-uppercase tracking-wider fw-bold p-2" style="font-size: 0.65rem;">Vie Scolaire</span>
+                                    <span class="inline-block rounded px-2 py-1 bg-emerald-500 text-white text-[0.65rem] font-bold uppercase tracking-wider">Vie Scolaire</span>
                                 {% else %}
-                                    <span class="badge bg-secondary text-uppercase tracking-wider fw-bold p-2" style="font-size: 0.65rem;">{{ event.category or 'Évènement' }}</span>
+                                    <span class="inline-block rounded px-2 py-1 bg-slate-500 text-white text-[0.65rem] font-bold uppercase tracking-wider">{{ event.category or 'Évènement' }}</span>
                                 {% endif %}
-                                
-                                <small class="text-white-50 fw-semibold">
-                                    <img class="site-icon me-1 site-icon-light" src="{{ url_for('static', filename='icons/calendar.svg') }}" alt=""> {{ event.date_str }}
+
+                                <small class="text-slate-300 font-semibold flex items-center gap-1">
+                                    <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/calendar.svg') }}" alt=""> {{ event.date_str }}
                                 </small>
                             </div>
-                            <div class="card-body px-4 py-3">
-                                <h3 class="h5 fw-bold mb-2 tracking-wide text-white">{{ event.title }}</h3>
-                                <p class="small text-light opacity-75 lh-base mb-0" style="white-space: pre-line;">{{ event.description }}</p>
+                            <div class="px-4 py-4">
+                                <h3 class="text-lg font-bold mb-2 tracking-wide text-white">{{ event.title }}</h3>
+                                <p class="text-sm text-slate-300 leading-relaxed mb-0" style="white-space: pre-line;">{{ event.description }}</p>
                             </div>
                             {% if event.link %}
-                                <div class="card-footer border-0 bg-transparent pb-4 px-4">
-                                    <a href="{{ event.link }}" class="btn btn-outline-light btn-sm w-100 fw-semibold text-uppercase tracking-wide opacity-75 hover-opacity-100">
+                                <div class="px-4 pb-4">
+                                    <a href="{{ event.link }}" class="block w-full rounded-lg border border-white/20 py-2 text-center text-sm font-semibold uppercase tracking-wide text-white/80 hover:bg-white/5">
                                         En savoir plus
                                     </a>
                                 </div>
@@ -54,15 +50,15 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="col-12 text-center py-5 my-4">
+                <div class="col-span-full text-center py-5 my-4">
                     <div class="opacity-25 mb-3">
-                        <img class="site-icon site-icon-light" src="{{ url_for('static', filename='icons/calendar.svg') }}" alt="" style="width: 3rem; height: 3rem;">
+                        <img class="site-icon site-icon-light mx-auto" src="{{ url_for('static', filename='icons/calendar.svg') }}" alt="" style="width: 3rem; height: 3rem;">
                     </div>
-                    <p class="lead text-white-50 opacity-50">Aucun évènement prévu pour le moment. Revenez bientôt !</p>
-                    <small class="text-secondary tracking-wide text-uppercase">Revenez bientôt pour suivre les actualités</small>
+                    <p class="text-xl text-slate-300/60">Aucun évènement prévu pour le moment. Revenez bientôt !</p>
+                    <small class="text-slate-400 tracking-wide uppercase">Revenez bientôt pour suivre les actualités</small>
                 </div>
             {% endif %}
-            
+
         </div>
     </div>
 </section>
