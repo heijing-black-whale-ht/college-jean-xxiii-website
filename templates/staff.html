@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Notre personnel - Collège Jean XXIII{% endblock %}
+{% block title %}Notre personnel - CollÃ¨ge Jean XXIII{% endblock %}
 
 {% block content %}
 <style>
     .staff-hero {
         min-height: 380px;
-        background: linear-gradient(110deg, rgba(8, 12, 27, .94), rgba(25, 135, 84, .55)), url("{{ url_for(''static'', filename=''images/bg-image1.png'') }}") center / cover;
+        background: linear-gradient(110deg, rgba(8, 12, 27, .94), rgba(25, 135, 84, .55)), url("{{ url_for('static', filename='images/bg-image1.png') }}") center / cover;
         position: relative;
         overflow: hidden;
     }
@@ -61,84 +61,61 @@
     }
 </style>
 
-<div class="container py-5">
-    <!-- Hero Section -->
-    <section class="staff-hero rounded-4 shadow-lg overflow-hidden text-center text-white mb-5" aria-labelledby="staff-title">
-        <div class="d-flex flex-column align-items-center justify-content-center h-100 px-4 py-5">
-            <span class="badge rounded-pill bg-light text-dark px-3 py-2 mb-3">Notre communauté éducative</span>
-            <h1 id="staff-title" class="display-4 fw-bold mb-3">Une équipe engagée pour la réussite</h1>
-            <p class="lead text-white-50 mx-auto mb-0" style="max-width: 700px;">Découvrez les femmes et les hommes qui accompagnent, inspirent et guident nos élèves au quotidien au Collège Jean XXIII.</p>
+<div class="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+    <section class="staff-hero relative mb-5 overflow-hidden rounded-[2rem] text-white shadow-[0_1.5rem_3rem_rgba(15,23,42,0.18)]" aria-labelledby="staff-title">
+        <div class="flex min-h-[380px] flex-col items-center justify-center px-4 py-8 text-center md:px-8">
+            <span class="mb-3 inline-flex rounded-full bg-white/90 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-900">Notre communautÃ© Ã©ducative</span>
+            <h1 id="staff-title" class="mb-3 text-4xl font-black tracking-tight text-white sm:text-5xl">Une Ã©quipe engagÃ©e pour la rÃ©ussite</h1>
+            <p class="mx-auto max-w-3xl text-base text-slate-200/80 sm:text-lg">DÃ©couvrez les femmes et les hommes qui accompagnent, inspirent et guident nos Ã©lÃ¨ves au quotidien au CollÃ¨ge Jean XXIII.</p>
         </div>
     </section>
 
-    <!-- Direction Section -->
     <section class="mb-5 pb-3" aria-labelledby="direction-title">
-        <div class="d-flex align-items-center gap-3 mb-4">
-            <span class="bg-primary rounded-pill section-title-line"></span>
-            <h2 id="direction-title" class="h3 fw-bold text-dark mb-0">Direction &amp; administration</h2>
+        <div class="mb-4 flex items-center gap-3">
+            <span class="bg-brand-500 rounded-full section-title-line"></span>
+            <h2 id="direction-title" class="mb-0 text-2xl font-black tracking-tight text-slate-900">Direction &amp; administration</h2>
         </div>
-        <p class="text-secondary mb-4" style="max-width: 650px;">L''équipe de direction est responsable de l''excellence académique et de la gestion administrative de l''établissement.</p>
-        <div class="row g-4 justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <article class="staff-card card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="card-body text-center p-0">
-                        <div class="staff-avatar bg-primary bg-gradient mb-4 mx-auto" aria-hidden="true">D</div>
-                        <h3 class="h5 fw-bold text-dark mb-1">Directeur principal</h3>
-                        <p class="text-primary small fw-semibold mb-3">Direction générale</p>
-                        <p class="text-secondary mb-0">Garant de l''excellence académique et des valeurs de notre institution.</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-5">
-                <article class="staff-card card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="card-body text-center p-0">
-                        <div class="staff-avatar bg-secondary bg-gradient mb-4 mx-auto" aria-hidden="true">C</div>
-                        <h3 class="h5 fw-bold text-dark mb-1">Censeur</h3>
-                        <p class="text-primary small fw-semibold mb-3">Direction des études</p>
-                        <p class="text-secondary mb-0">Responsable du suivi pédagogique, des horaires et du bon déroulement des cours.</p>
-                    </div>
-                </article>
-            </div>
+        <p class="mb-4 max-w-2xl text-slate-600">L'Ã©quipe de direction est responsable de l'excellence acadÃ©mique et de la gestion administrative de l'Ã©tablissement.</p>
+        <div class="grid justify-center gap-4 md:grid-cols-2">
+            <article class="staff-card h-full rounded-[1.75rem] border border-slate-200 bg-white p-5 text-center shadow-sm">
+                <div class="staff-avatar mx-auto mb-4 bg-gradient-to-br from-brand-500 to-blue-600" aria-hidden="true">D</div>
+                <h3 class="mb-1 text-xl font-bold text-slate-900">Directeur principal</h3>
+                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-brand-500">Direction gÃ©nÃ©rale</p>
+                <p class="mb-0 text-slate-600">Garant de l'excellence acadÃ©mique et des valeurs de notre institution.</p>
+            </article>
+            <article class="staff-card h-full rounded-[1.75rem] border border-slate-200 bg-white p-5 text-center shadow-sm">
+                <div class="staff-avatar mx-auto mb-4 bg-gradient-to-br from-slate-600 to-slate-800" aria-hidden="true">C</div>
+                <h3 class="mb-1 text-xl font-bold text-slate-900">Censeur</h3>
+                <p class="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-brand-500">Direction des Ã©tudes</p>
+                <p class="mb-0 text-slate-600">Responsable du suivi pÃ©dagogique, des horaires et du bon dÃ©roulement des cours.</p>
+            </article>
         </div>
     </section>
 
-    <hr class="my-5 opacity-10">
+    <hr class="my-5 border-slate-200/80">
 
-    <!-- Teachers Section -->
     <section aria-labelledby="teachers-title">
-        <div class="d-flex align-items-center gap-3 mb-4">
-            <span class="bg-success rounded-pill section-title-line"></span>
-            <h2 id="teachers-title" class="h3 fw-bold text-dark mb-0">Quelques-uns de nos enseignants</h2>
+        <div class="mb-4 flex items-center gap-3">
+            <span class="bg-emerald-500 rounded-full section-title-line"></span>
+            <h2 id="teachers-title" class="mb-0 text-2xl font-black tracking-tight text-slate-900">Quelques-uns de nos enseignants</h2>
         </div>
-        <p class="text-secondary mb-4" style="max-width: 650px;">Nos professionnels de l''éducation apportent expertise, passion et innovation dans leurs enseignements.</p>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <article class="staff-card card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="card-body p-0">
-                        <span class="badge text-bg-primary-subtle text-primary-emphasis rounded-pill subject-badge mb-3">Économie</span>
-                        <h3 class="h5 fw-bold text-dark mb-2">Professeur d''économie</h3>
-                        <p class="text-secondary mb-0">Avec une approche interactive, il rend les concepts économiques accessibles et captivants pour les élèves.</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="staff-card card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="card-body p-0">
-                        <span class="badge text-bg-success-subtle text-success-emphasis rounded-pill subject-badge mb-3">Mathématiques</span>
-                        <h3 class="h5 fw-bold text-dark mb-2">Professeur de mathématiques</h3>
-                        <p class="text-secondary mb-0">Il utilise des méthodes innovantes pour démystifier les mathématiques et stimuler la curiosité intellectuelle.</p>
-                    </div>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="staff-card card h-100 border-0 shadow-sm rounded-4 p-4">
-                    <div class="card-body p-0">
-                        <span class="badge text-bg-info-subtle text-info-emphasis rounded-pill subject-badge mb-3">Informatique</span>
-                        <h3 class="h5 fw-bold text-dark mb-2">Professeur d''informatique</h3>
-                        <p class="text-secondary mb-0">Il initie les élèves aux bases de la programmation et aux outils informatiques modernes.</p>
-                    </div>
-                </article>
-            </div>
+        <p class="mb-4 max-w-2xl text-slate-600">Nos professionnels de l'Ã©ducation apportent expertise, passion et innovation dans leurs enseignements.</p>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <article class="staff-card h-full rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm">
+                <span class="subject-badge mb-3 inline-flex rounded-full bg-blue-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-700">Ã‰conomie</span>
+                <h3 class="mb-2 text-xl font-bold text-slate-900">Professeur d'Ã©conomie</h3>
+                <p class="mb-0 text-slate-600">Avec une approche interactive, il rend les concepts Ã©conomiques accessibles et captivants pour les Ã©lÃ¨ves.</p>
+            </article>
+            <article class="staff-card h-full rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm">
+                <span class="subject-badge mb-3 inline-flex rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-700">MathÃ©matiques</span>
+                <h3 class="mb-2 text-xl font-bold text-slate-900">Professeur de mathÃ©matiques</h3>
+                <p class="mb-0 text-slate-600">Il utilise des mÃ©thodes innovantes pour dÃ©mystifier les mathÃ©matiques et stimuler la curiositÃ© intellectuelle.</p>
+            </article>
+            <article class="staff-card h-full rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm md:col-span-2 xl:col-span-1">
+                <span class="subject-badge mb-3 inline-flex rounded-full bg-cyan-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-700">Informatique</span>
+                <h3 class="mb-2 text-xl font-bold text-slate-900">Professeur d'informatique</h3>
+                <p class="mb-0 text-slate-600">Il initie les Ã©lÃ¨ves aux bases de la programmation et aux outils informatiques modernes.</p>
+            </article>
         </div>
     </section>
 </div>
